@@ -8,7 +8,6 @@ void hardCodearChoferes(eChofer listado[],int tam){
     double telefono[TAM_HARDCODEO_CHOFERES] = {49845124,49784512,49875961,49887755,493268971,44124578};
     int edad[TAM_HARDCODEO_CHOFERES] = {40,55,21,46,27};
     char sexo[TAM_HARDCODEO_CHOFERES] = {'f','m','m','m','m','m'};
-    int idCamion[10] = {2000,2001,2002,2003,2004,2005,2006,2007,2008,0};
     for(int i=0; i<6;i++){
         listado[i].id = id[i];
         strcpy(listado[i].apellido,apellido[i]);
@@ -19,9 +18,7 @@ void hardCodearChoferes(eChofer listado[],int tam){
         listado[i].edad = edad[i];
         listado[i].sexo = sexo[i];
     }
-    for(int i=0; i<10;i++){
-        listado[i].idCamion = idCamion[i];
-    }
+
 }
 
 void mostrarUnChofer(eChofer chofer , eCamion listadoCamiones[], int tam)
@@ -48,7 +45,7 @@ void mostrarTodosLosChoferes(eChofer listado[], int tamChoferes,eCamion listadoC
     {
         mostrarUnChofer(listado[i],listadoCamiones,tamChoferes);
         for(j = 0;j<tamCamiones;j++){
-            if(listado[i].idCamion == listadoCamiones[j].id){
+            if(listado[i].id == listadoCamiones[j].idChofer){
                 mostrarCamion(listadoCamiones[j]);
             }
         }

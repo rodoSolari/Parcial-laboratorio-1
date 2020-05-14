@@ -9,7 +9,7 @@ void hardCodearCamiones(eCamion listado[],int tam){
     int cantidadDeRuedas[TAM_HARDCODEO]={8,8,8,12,12,12,6,6,6,10};
     char tipo[TAM_HARDCODEO][MAX_STRING] = {"Larga distancia","Larga distancia","Corta distancia","Larga distancia","corta distancia","Larga distancia","Larga distancia","Larga distancia","Larga distancia","Larga distancia"};
     int i;
-    //int idChofer[TAM_HARDCODEO]={1,1,2,2,3,4,4,5,5,5};
+    int idChofer[TAM_HARDCODEO]={1,1,2,2,3,4,4,5,5,5};
     for(i=0; i<10;i++){
         listado[i].id = id[i];
         strcpy(listado[i].patente,patente[i]);
@@ -18,7 +18,7 @@ void hardCodearCamiones(eCamion listado[],int tam){
         listado[i].peso = peso[i];
         listado[i].cantidadDeRuedas = cantidadDeRuedas[i];
         strcpy(listado[i].tipo,tipo[i]);
-       // listado[i].idChofer = idChofer[i];
+        listado[i].idChofer = idChofer[i];
     }
 }
 

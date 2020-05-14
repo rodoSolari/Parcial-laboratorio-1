@@ -11,7 +11,7 @@ typedef struct{
     int peso;
     int cantidadDeRuedas;
     char tipo[MAX_STRING];
-   // int idChofer;
+    int idChofer;
 }eCamion;
 
 void hardCodearCamiones(eCamion listado[],int tam);

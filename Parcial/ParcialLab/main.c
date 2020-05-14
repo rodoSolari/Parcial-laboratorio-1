@@ -12,7 +12,6 @@ int main()
     eCamion listaCamiones[25];
     hardCodearChoferes(listaChoferes,CANT_CHOFERES);
     hardCodearCamiones(listaCamiones,CANT_CAMIONES);
-    mostrarCamion(listaCamiones[0]);
     mostrarTodosLosChoferes(listaChoferes,CANT_CHOFERES,listaCamiones,CANT_CAMIONES);
     return 0;
 }
