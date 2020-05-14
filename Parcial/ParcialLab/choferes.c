@@ -23,11 +23,8 @@ void hardCodearChoferes(eChofer listado[],int tam){
 
 }
 
-void mostrarUnChofer(eChofer chofer , eCamion listadoCamiones[], int tam)
+void mostrarUnChofer(eChofer chofer)
 {
-    eCamion camionAux;
-
-    camionAux=buscarCamion(listadoCamiones, tam, chofer.idCamion);
     printf("__________Datos del chofer________\n");
     printf ("id : %d\t nombre: %s apellido :%s \t dni : %d \tlegajo:%d \t nacionalidad: %s \nTelefono: %d \tedad: %d \tsexo: %c\n",chofer.id,chofer.nombre,
                                                             chofer.apellido,
@@ -39,6 +36,16 @@ void mostrarUnChofer(eChofer chofer , eCamion listadoCamiones[], int tam)
                                                             chofer.sexo);
 }
 
+void mostrarListadoChoferes(eChofer listado[], int tam){
+    int i;
+    printf("LISTADO DE CHOFERES\n");
+    for(i=0;i<tam;i++){
+        mostrarUnChofer(listado[i]);
+    }
+    printf("_____________________________________\n");
+}
+
+
 void mostrarTodosLosChoferes(eChofer listado[], int tamChoferes,eCamion listadoCamiones[], int tamCamiones)
 {
     int i;
@@ -47,7 +54,7 @@ void mostrarTodosLosChoferes(eChofer listado[], int tamChoferes,eCamion listadoC
     for(i=0; i<tamChoferes; i++)
     {
         tieneCamion=0;
-        mostrarUnChofer(listado[i],listadoCamiones,tamChoferes);
+        mostrarUnChofer(listado[i]);
         for(j = 0;j<tamCamiones;j++){
             if(listado[i].id == listadoCamiones[j].idChofer){
                 mostrarCamion(listadoCamiones[j]);

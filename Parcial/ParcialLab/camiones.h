@@ -14,6 +14,7 @@ typedef struct{
     int idChofer;
 }eCamion;
 
+void mostrarListadoCamiones(eCamion listado[],int tam);
 void hardCodearCamiones(eCamion listado[],int tam);
 eCamion buscarCamion(eCamion listadoCamiones[],int tam, int id);
 void mostrarCamion(eCamion camion);

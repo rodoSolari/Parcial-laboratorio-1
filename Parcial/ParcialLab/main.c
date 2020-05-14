@@ -12,6 +12,8 @@ int main()
     eCamion listaCamiones[MAX_CAMIONES];
     hardCodearChoferes(listaChoferes,CANT_CHOFERES);
     hardCodearCamiones(listaCamiones,CANT_CAMIONES);
+    mostrarListadoChoferes(listaChoferes, CANT_CHOFERES);
+    mostrarListadoCamiones(listaCamiones, CANT_CAMIONES);
     mostrarTodosLosChoferes(listaChoferes,CANT_CHOFERES,listaCamiones,CANT_CAMIONES);
     return 0;
 }

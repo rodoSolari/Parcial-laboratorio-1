@@ -22,7 +22,8 @@ typedef struct{
     int idCamion;
 }eChofer;
 
+void mostrarListadoChoferes(eChofer listado[], int tam);
+void mostrarUnChofer(eChofer chofer);
 void hardCodearChoferes(eChofer listado[],int tam);
 void mostrarTodosLosChoferes(eChofer listado[], int tamChoferes,eCamion listadoCamiones[], int tamCamiones);
-void mostrarUnChofer(eChofer chofer , eCamion arrayCamiones[], int tam);
 #endif // CHOFERES_H_INCLUDED

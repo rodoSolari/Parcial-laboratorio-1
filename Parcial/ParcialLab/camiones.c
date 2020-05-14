@@ -33,6 +33,16 @@ void mostrarCamion(eCamion camion){
                                                                                             camion.tipo);
 
 }
+
+void mostrarListadoCamiones(eCamion listado[],int tam){
+    int i;
+    printf("LISTADO DE CAMIONES\n");
+    for(i=0;i<tam;i++){
+        mostrarCamion(listado[i]);
+    }
+    printf("_____________________________________\n");
+}
+
 eCamion buscarCamion(eCamion listadoCamiones[],int tam, int id){
     int i;
     eCamion auxCamion={0,"no existe","no existe",0,0,0,"no existe"};
