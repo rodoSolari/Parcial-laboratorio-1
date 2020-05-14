@@ -11,6 +11,7 @@ tenemos por ahora 6 choferes pero tengo lugar para 12.
 */
 typedef struct{
     int id; //primary key
+    char nombre[TAM_STRING];
     char apellido[TAM_STRING];
     int dni;
     int legajo;

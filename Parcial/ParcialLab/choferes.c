@@ -1,7 +1,8 @@
 #include "choferes.h"
 void hardCodearChoferes(eChofer listado[],int tam){
     int id[TAM_HARDCODEO_CHOFERES]={1,2,3,4,5,6};
-    char apellido[TAM_HARDCODEO_CHOFERES][TAM_STRING]={"Lucrecia","Jorge","Natalia","Matias","Geremias","Lopez"};
+    char apellido[TAM_HARDCODEO_CHOFERES][TAM_STRING]={"Rodriguez","Hurtado","Alvarez","Bolsch","Vautier","Lopez"};
+    char nombre[TAM_HARDCODEO_CHOFERES][TAM_STRING]={"Lucrecia","Jorge","Natalia","Matias","Geremias","Lautaro"};
     double dni[TAM_HARDCODEO_CHOFERES] = {11542154,45125454,20544487,44458784,44778469,10200548};
     int legajo[TAM_HARDCODEO_CHOFERES]={17780,17781,17782,17783,17784,17785};
     char nacionalidad[TAM_HARDCODEO_CHOFERES][TAM_STRING]={"Argentina","Argentina","Argentina","Canadiense","Aleman","Finlandes"};
@@ -10,6 +11,7 @@ void hardCodearChoferes(eChofer listado[],int tam){
     char sexo[TAM_HARDCODEO_CHOFERES] = {'f','m','m','m','m','m'};
     for(int i=0; i<6;i++){
         listado[i].id = id[i];
+        strcpy(listado[i].nombre,nombre[i]);
         strcpy(listado[i].apellido,apellido[i]);
         listado[i].dni = dni[i];
         listado[i].legajo = legajo[i];
@@ -27,7 +29,7 @@ void mostrarUnChofer(eChofer chofer , eCamion listadoCamiones[], int tam)
 
     camionAux=buscarCamion(listadoCamiones, tam, chofer.idCamion);
     printf("__________Datos del chofer________\n");
-    printf ("id : %d\t apellido :%s \t dni : %d \tlegajo:%d \t nacionalidad: %s \nTelefono: %d \tedad: %d \tsexo: %c\n",chofer.id,
+    printf ("id : %d\t nombre: %s apellido :%s \t dni : %d \tlegajo:%d \t nacionalidad: %s \nTelefono: %d \tedad: %d \tsexo: %c\n",chofer.id,chofer.nombre,
                                                             chofer.apellido,
                                                             chofer.dni,
                                                             chofer.legajo,

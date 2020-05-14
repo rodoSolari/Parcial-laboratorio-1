@@ -8,8 +8,8 @@
 
 int main()
 {
-    eChofer listaChoferes[10];
-    eCamion listaCamiones[25];
+    eChofer listaChoferes[MAX_CHOFERES];
+    eCamion listaCamiones[MAX_CAMIONES];
     hardCodearChoferes(listaChoferes,CANT_CHOFERES);
     hardCodearCamiones(listaCamiones,CANT_CAMIONES);
     mostrarTodosLosChoferes(listaChoferes,CANT_CHOFERES,listaCamiones,CANT_CAMIONES);
