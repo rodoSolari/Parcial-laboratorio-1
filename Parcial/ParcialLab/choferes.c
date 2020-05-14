@@ -6,7 +6,7 @@ void hardCodearChoferes(eChofer listado[],int tam){
     int legajo[TAM_HARDCODEO_CHOFERES]={17780,17781,17782,17783,17784,17785};
     char nacionalidad[TAM_HARDCODEO_CHOFERES][TAM_STRING]={"Argentina","Argentina","Argentina","Canadiense","Aleman","Finlandes"};
     double telefono[TAM_HARDCODEO_CHOFERES] = {49845124,49784512,49875961,49887755,493268971,44124578};
-    int edad[TAM_HARDCODEO_CHOFERES] = {40,55,21,46,27};
+    int edad[TAM_HARDCODEO_CHOFERES] = {40,55,21,46,27,40};
     char sexo[TAM_HARDCODEO_CHOFERES] = {'f','m','m','m','m','m'};
     for(int i=0; i<6;i++){
         listado[i].id = id[i];
@@ -41,12 +41,18 @@ void mostrarTodosLosChoferes(eChofer listado[], int tamChoferes,eCamion listadoC
 {
     int i;
     int j;
+    int tieneCamion;
     for(i=0; i<tamChoferes; i++)
     {
+        tieneCamion=0;
         mostrarUnChofer(listado[i],listadoCamiones,tamChoferes);
         for(j = 0;j<tamCamiones;j++){
             if(listado[i].id == listadoCamiones[j].idChofer){
                 mostrarCamion(listadoCamiones[j]);
+                tieneCamion++;
+            }
+            if(tieneCamion==0 && j==tamCamiones-1){
+                printf("No tiene camiones al mando\n");
             }
         }
    }
