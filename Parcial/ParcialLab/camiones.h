@@ -12,6 +12,7 @@ typedef struct{
     int cantidadDeRuedas;
     char tipo[MAX_STRING];
     int idChofer;
+    int estado;
 }eCamion;
 
 void mostrarListadoCamiones(eCamion listado[],int tam);

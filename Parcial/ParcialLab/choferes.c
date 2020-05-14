@@ -19,6 +19,7 @@ void hardCodearChoferes(eChofer listado[],int tam){
         listado[i].telefono = telefono[i];
         listado[i].edad = edad[i];
         listado[i].sexo = sexo[i];
+        listado[i].estado = OCUPADO;
     }
 
 }
@@ -26,7 +27,7 @@ void hardCodearChoferes(eChofer listado[],int tam){
 void mostrarUnChofer(eChofer chofer)
 {
     printf("__________Datos del chofer________\n");
-    printf ("id : %d\t nombre: %s apellido :%s \t dni : %d \tlegajo:%d \t nacionalidad: %s \nTelefono: %d \tedad: %d \tsexo: %c\n",chofer.id,chofer.nombre,
+    printf ("id : %d \t nombre: %s \tapellido :%s \t dni : %d \tlegajo:%d \t nacionalidad: %s \nTelefono: %d \tedad: %d \tsexo: %c\n",chofer.id,chofer.nombre,
                                                             chofer.apellido,
                                                             chofer.dni,
                                                             chofer.legajo,

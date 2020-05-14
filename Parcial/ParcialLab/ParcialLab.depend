@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1589467221 source:c:\users\montreal\desktop\parcial\parciallab\choferes.c
+1589467946 source:c:\users\montreal\desktop\parcial\parciallab\choferes.c
 	"choferes.h"
 
-1589467161 c:\users\montreal\desktop\parcial\parciallab\choferes.h
+1589467953 c:\users\montreal\desktop\parcial\parciallab\choferes.h
 	<string.h>
 	<stdio.h>
 	"camiones.h"
@@ -16,6 +16,6 @@
 	"camiones.h"
 	"choferes.h"
 
-1589467447 c:\users\montreal\desktop\parcial\parciallab\camiones.h
+1589468002 c:\users\montreal\desktop\parcial\parciallab\camiones.h
 	<string.h>
 

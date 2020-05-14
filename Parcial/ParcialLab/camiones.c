@@ -19,6 +19,7 @@ void hardCodearCamiones(eCamion listado[],int tam){
         listado[i].cantidadDeRuedas = cantidadDeRuedas[i];
         strcpy(listado[i].tipo,tipo[i]);
         listado[i].idChofer = idChofer[i];
+        listado[i].estado = OCUPADO;
     }
 }
 

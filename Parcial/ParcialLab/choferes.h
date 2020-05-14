@@ -5,6 +5,8 @@
 #include <string.h>
 #include <stdio.h>
 #include "camiones.h"
+#define OCUPADO 1
+#define LIBRE 0
 /*1-Tenemos un listado de
 Choferes(apellido,dni,legajo,nacionalidad,teléfono,edad,sexo) .
 tenemos por ahora 6 choferes pero tengo lugar para 12.
@@ -20,6 +22,7 @@ typedef struct{
     int edad;
     char sexo;
     int idCamion;
+    int estado;
 }eChofer;
 
 void mostrarListadoChoferes(eChofer listado[], int tam);
