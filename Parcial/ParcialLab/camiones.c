@@ -23,7 +23,7 @@ void hardCodearCamiones(eCamion listado[],int tam){
 }
 
 void mostrarCamion(eCamion camion){
-    printf("Datos del camion : \n");
+    printf("~~~Datos del camion : ~~~\n");
     printf("id:%d\n patente : %s \tmarca:%s\tanio:%d\tpeso:%d cantidad de ruedas:%d\ntipo:%s\n",camion.id,
                                                                                             camion.patente,
                                                                                             camion.marca,

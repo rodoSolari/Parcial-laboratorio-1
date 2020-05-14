@@ -24,10 +24,6 @@ void hardCodearChoferes(eChofer listado[],int tam){
     }
 }
 
-/*void mostrarListadoChoferesConCamiones(eChofer listado[]){
-
-}*/
-
 void mostrarUnChofer(eChofer chofer , eCamion listadoCamiones[], int tam)
 {
     eCamion camionAux;
@@ -42,17 +38,20 @@ void mostrarUnChofer(eChofer chofer , eCamion listadoCamiones[], int tam)
                                                             chofer.telefono,
                                                             chofer.edad,
                                                             chofer.sexo);
-    mostrarCamion(camionAux);
-
 }
 
 void mostrarTodosLosChoferes(eChofer listado[], int tamChoferes,eCamion listadoCamiones[], int tamCamiones)
 {
     int i;
-
-   for(i=0; i<tamChoferes; i++)
-   {
-        mostrarUnChofer(listado[i],listadoCamiones,tamCamiones);
+    int j;
+    for(i=0; i<tamChoferes; i++)
+    {
+        mostrarUnChofer(listado[i],listadoCamiones,tamChoferes);
+        for(j = 0;j<tamCamiones;j++){
+            if(listado[i].idCamion == listadoCamiones[j].id){
+                mostrarCamion(listadoCamiones[j]);
+            }
+        }
    }
 }
 
