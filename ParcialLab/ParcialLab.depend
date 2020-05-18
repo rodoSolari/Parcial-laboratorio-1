@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1589467946 source:c:\users\montreal\desktop\parcial\parciallab\choferes.c
+	"choferes.h"
+
+1589468891 c:\users\montreal\desktop\parcial\parciallab\choferes.h
+	<string.h>
+	<stdio.h>
+	"camiones.h"
+
+1589467299 source:c:\users\montreal\desktop\parcial\parciallab\main.c
+	<stdio.h>
+	<stdlib.h>
+	"choferes.h"
+
+1589468008 source:c:\users\montreal\desktop\parcial\parciallab\camiones.c
+	"camiones.h"
+	"choferes.h"
+
+1589468002 c:\users\montreal\desktop\parcial\parciallab\camiones.h
+	<string.h>
+
+1589757015 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\main.c
+	<stdio.h>
+	<stdlib.h>
+	"choferes.h"
+
+1589698836 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\choferes.h
+	<string.h>
+	<stdio.h>
+	"camiones.h"
+
+1589755783 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\camiones.h
+	<string.h>
+
+1589757156 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\funcionesparavalidardatos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesParaValidarDatos.h"
+
+1589757319 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\funcionesparavalidardatos.h
+
+1589755911 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\choferes.c
+	"choferes.h"
+	"funcionesParaValidarDatos.h"
+
+1589756726 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\camiones.c
+	"camiones.h"
+	"choferes.h"
+	"funcionesParaValidarDatos.h"
+
