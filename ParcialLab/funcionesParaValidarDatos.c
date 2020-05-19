@@ -91,3 +91,56 @@ void getString(char* arrayString, char* message, char* errorMessage)
         gets(arrayString);
     }
 }
+
+int esMarca(char arrayString[]){
+    int respuesta=0;
+    char marcas[3][MAX_STRING]={"ford","fiat","wv"};
+    for(int i=0; i<3; i++){
+        if(stricmp(marcas[i],arrayString)==0){
+            respuesta=1;
+            break;
+        }
+    }
+    return respuesta;
+}
+
+void getMarca(char* arrayString, char* message, char* errorMessage)
+{
+    printf("%s", message);
+    fflush(stdin);
+    gets(arrayString);
+
+    while(esString(arrayString)==1 && esMarca(arrayString)==1){
+        printf("%s", errorMessage);
+        fflush(stdin);
+        gets(arrayString);
+    }
+}
+
+void getDni(char* arrayString, char* message, char* errorMessage){
+    printf("%s", message);
+    fflush(stdin);
+    gets(arrayString);
+    int number=atoi(arrayString);
+    while(isNumeric(arrayString)==0 && number>0){  //OJO, probar si funciona
+        printf("%s", errorMessage);
+        fflush(stdin);
+        gets(arrayString);
+        number=atoi(arrayString);
+    }
+
+}
+
+void getLong(long* number, char* message, char* errorMessage){
+    char string[MAX_STRING];
+    printf("%s", message);
+    fflush(stdin);
+    gets(string);
+    *number=atol(string);
+    while(isNumeric(string)==0){
+        printf("%s", errorMessage);
+        fflush(stdin);
+        gets(string);
+        *number=atoi(string);
+    }
+}

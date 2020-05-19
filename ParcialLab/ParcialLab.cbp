@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="camiones.h" />
+		<Unit filename="choferCamion.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="choferCamion.h" />
 		<Unit filename="choferes.c">
 			<Option compilerVar="CC" />
 		</Unit>

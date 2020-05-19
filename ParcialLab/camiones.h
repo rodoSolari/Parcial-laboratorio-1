@@ -23,5 +23,6 @@ eCamion cargarCamion();
 int buscarPosicionLibre(eCamion listado[],int tam);
 int buscarPosicionCamion(eCamion listadoCamiones[],int tam, int id);
 void eliminarCamion(eCamion listado[],int tam);
+void ordenarCamionesPorTipo(eCamion listadoCamiones[],int tamCamiones);
 
 #endif // CAMIONES_H_INCLUDED

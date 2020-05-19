@@ -106,21 +106,69 @@ int buscarPosicionCamion(eCamion listadoCamiones[],int tam, int id){
 
 
 void eliminarCamion(eCamion listado[],int tam){
-    eCamion auxCamion;
     int indice;
-    /*printf("Ingrese el Id del camion a eliminar: ");
-    scanf("%d", &auxCamion.id);*/
-    getInt(&auxCamion.id,"Anio : ","Error, por favor ingrese una patente valida");
-    indice = buscarPosicionCamion(listado,tam,auxCamion.id);
-    if(listado[indice].id == auxCamion.id){
+    int id;
+    getInt(&id,"Ingrese el ID a eliminar","Error : ingrese un numero valido");
+    indice = buscarPosicionCamion(listado,tam,id);
+    if(indice>=0){
         mostrarCamion(listado[indice]);
         listado[indice].estado = LIBRE;
-        printf("Eliminado");
+        printf("Eliminado\n");
     }else{
-        printf("No existe");
+        printf("No existe\n");
     }
 }
 
-void modificarCamion(eCamion listado[],int tam){
+/*void eliminarCamion(eCamion listado[],int tam, int id){
+    int indice;
+    getInt(id,"Ingrese el ID a eliminar","Error : ingrese un numero valido");
+    indice = buscarPosicionCamion(listado,tam,id);
+    if(indice>=0){
+        mostrarCamion(listado[indice]);
+        listado[indice].estado = LIBRE;
+        printf("Eliminado\n");
+    }else{
+        printf("No existe\n");
+    }
+}*/
 
+void modificarCamion(eCamion listado[],int tam){
+    int indice;
+    int id;
+    int opcion;
+    printf("Modificar camion\n");
+    getInt(&id,"Ingrese el ID a modificar","Error : ingrese un numero valido");
+    printf("1. Tipo de camion\n2. Chofer");
+    getInt(&opcion,"Ingrese la opcion a modificar","Error : ingrese un numero valido");
+    indice = buscarPosicionCamion(listado,tam,id);
+    switch(opcion){
+        case 1:
+            getString(listado[indice].tipo,"Ingrese el tipo : ","Error, Ingrese un tipo valido");
+            break;
+        case 2:
+            getInt(&listado[indice].idChofer,"Ingrese el id del chofer : ","Error, Ingrese un tipo valido");
+            break;
+        default:
+            printf("opcion incorrecta");
+    }
 }
+
+void ordenarCamionesPorTipo(eCamion listadoCamiones[],int tamCamiones){
+    int i;
+    int j;
+    eCamion auxCamion;
+
+    for(i=0; i<tamCamiones-1;i++)
+    {
+        for(j=i+1; j<tamCamiones;j++)
+        {
+            if(stricmp(listadoCamiones[i].tipo,listadoCamiones[j].tipo)>0)
+            {
+                auxCamion = listadoCamiones[i];
+                listadoCamiones[i] = listadoCamiones[j];
+                listadoCamiones[j] = auxCamion;
+            }
+        }
+    }
+}
+

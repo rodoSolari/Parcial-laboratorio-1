@@ -19,33 +19,42 @@
 1589468002 c:\users\montreal\desktop\parcial\parciallab\camiones.h
 	<string.h>
 
-1589757015 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\main.c
+1589874159 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\main.c
 	<stdio.h>
 	<stdlib.h>
 	"choferes.h"
+	"choferCamion.h"
+	"choferCamion.h"
 
-1589698836 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\choferes.h
+1589874752 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\choferes.h
 	<string.h>
 	<stdio.h>
 	"camiones.h"
 
-1589755783 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\camiones.h
+1589863159 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\camiones.h
 	<string.h>
 
-1589757156 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\funcionesparavalidardatos.c
+1589873362 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\funcionesparavalidardatos.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"funcionesParaValidarDatos.h"
 
-1589757319 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\funcionesparavalidardatos.h
+1589873112 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\funcionesparavalidardatos.h
 
-1589755911 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\choferes.c
+1589873953 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\choferes.c
 	"choferes.h"
 	"funcionesParaValidarDatos.h"
 
-1589756726 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\camiones.c
+1589863425 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\camiones.c
 	"camiones.h"
+	"choferes.h"
+	"funcionesParaValidarDatos.h"
+
+1589874329 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\chofercamion.c
+	"choferCamion.h"
+
+1589874279 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\chofercamion.h
 	"choferes.h"
 	"funcionesParaValidarDatos.h"
 

@@ -2,6 +2,9 @@
 #define CHOFERES_H_INCLUDED
 #define TAM_STRING 20
 #define TAM_HARDCODEO_CHOFERES 6
+#define TAM_DNI 10
+#define TAM_TELEFONO 10
+#define MAX_CHOFERES 18
 #include <string.h>
 #include <stdio.h>
 #include "camiones.h"
@@ -15,19 +18,25 @@ typedef struct{
     int id; //primary key
     char nombre[TAM_STRING];
     char apellido[TAM_STRING];
-    int dni;
+    //char dni[TAM_DNI];
+    long dni;
     int legajo;
     char nacionalidad[TAM_STRING];
-    int telefono;
+    //char telefono[TAM_TELEFONO];
+    long telefono;
     int edad;
     char sexo;
-    int idCamion;
     int estado;
 }eChofer;
 
+void hardCodearChoferes(eChofer listado[],int tam);
 void mostrarChoferesDisponibles(eChofer listado[], int tam);
 void mostrarListadoChoferes(eChofer listado[], int tam);
 void mostrarUnChofer(eChofer chofer);
-void hardCodearChoferes(eChofer listado[],int tam);
 void mostrarTodosLosChoferes(eChofer listado[], int tamChoferes,eCamion listadoCamiones[], int tamCamiones);
+//void eliminarChofer(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones);
+int buscarPosicionChofer(eChofer listado[],int tam, int id);
+void modificarChofer(eChofer listado[],int tam);
+void mostrarCamionesPorMarca(eCamion listado[],int tam,char* marca);
+void calcularPromedioEdad(eChofer listado[],int tam);
 #endif // CHOFERES_H_INCLUDED

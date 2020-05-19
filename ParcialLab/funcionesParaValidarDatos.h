@@ -49,4 +49,11 @@ int isFloat(char stringNumber[]);
 void getFloat(float* number, char* message, char* errorMessage);
 
 
+void getDni(char* arrayString, char* message, char* errorMessage);
+
+void getLong(long* number, char* message, char* errorMessage);
+
+
+int esMarca(char arrayString[]);
+void getMarca(char* arrayString, char* message, char* errorMessage);
 #endif // FUNCIONESPARAVALIDARDATOS_H_INCLUDED
