@@ -56,4 +56,6 @@ void getLong(long* number, char* message, char* errorMessage);
 
 int esMarca(char arrayString[]);
 void getMarca(char* arrayString, char* message, char* errorMessage);
+
+void getChar(char character, char* message, char* errorMessage,char primerValor,char segundoValor);
 #endif // FUNCIONESPARAVALIDARDATOS_H_INCLUDED

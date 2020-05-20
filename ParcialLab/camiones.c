@@ -158,17 +158,25 @@ void ordenarCamionesPorTipo(eCamion listadoCamiones[],int tamCamiones){
     int j;
     eCamion auxCamion;
 
-    for(i=0; i<tamCamiones-1;i++)
-    {
-        for(j=i+1; j<tamCamiones;j++)
-        {
-            if(stricmp(listadoCamiones[i].tipo,listadoCamiones[j].tipo)>0)
-            {
+    for(i=0; i<tamCamiones-1;i++){
+        for(j=i+1; j<tamCamiones;j++){
+            if(stricmp(listadoCamiones[i].tipo,listadoCamiones[j].tipo)>0){
                 auxCamion = listadoCamiones[i];
                 listadoCamiones[i] = listadoCamiones[j];
                 listadoCamiones[j] = auxCamion;
             }
         }
     }
+}
+
+void calcularPromedioAntiguedadCamiones(eCamion listadoCamiones[],int tamCamiones){
+    int i;
+    int promedioAntiguedad = 0;
+    int antiguedadCamion;
+    for(i=0; i<tamCamiones;i++){
+        antiguedadCamion=2020-listadoCamiones[i].anio;
+        promedioAntiguedad+=antiguedadCamion;
+    }
+    printf("Promedio de antiguedad de los camiones : %2.f",(float)promedioAntiguedad);
 }
 

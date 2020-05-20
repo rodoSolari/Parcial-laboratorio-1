@@ -48,19 +48,14 @@ void mostrarUnChofer(eChofer chofer)
 
 eChofer cargarChofer(){
     eChofer nuevoChofer;
-    char sexo;
     getString(nuevoChofer.nombre,"Nombre del chofer : ","Error, por favor ingrese un nombre valido\n");
     getString(nuevoChofer.apellido,"Apellido del chofer : ","Error, por favor ingrese un apellido valida\n");
     getLong(&nuevoChofer.dni,"DNI : ","Error, por favor ingrese una patente valida");
     getInt(&nuevoChofer.legajo,"Peso","Error, por favor ingrese un legajo valido");
     getString(nuevoChofer.nacionalidad,"Nacionalidad : ","Error, por favor ingrese un tipo valido\n");
     getLong(&nuevoChofer.telefono,"telefono : ","Error, por favor ingrese un telefono valido\n");
-    printf("ingrese el sexo: f/m : ");
-    scanf("%c",&sexo);
-    while(sexo!= 'f' && sexo!= 'm'){
-        printf("Error, ingrese un sexo valido\n");
-        scanf("%c",&sexo);
-    }
+    getChar(nuevoChofer.sexo,"Sexo : ","Error, por favor ingrese un sexo valido",'f','m');
+
     nuevoChofer.estado = OCUPADO;
     nuevoChofer.id = contadorId + 1;
     return nuevoChofer;
@@ -117,7 +112,7 @@ int buscarPosicionChofer(eChofer listado[],int tam, int id){
     return respuesta;
 }
 
-/*void eliminarChofer(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones){
+void eliminarChofer(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones){
     int indice;
     int id;
     int i;
@@ -126,7 +121,7 @@ int buscarPosicionChofer(eChofer listado[],int tam, int id){
     if(indice>=0){
         mostrarUnChofer(listadoChoferes[indice]);
         for(i=0;i<tamCamiones;i++){
-            if(listadoChoferes[indice].idCamion == listadoCamiones[i].idChofer){
+            if(listadoChoferes[indice].id == listadoCamiones[i].idChofer){
                 listadoCamiones[i].estado = LIBRE;
             }
         }
@@ -136,7 +131,7 @@ int buscarPosicionChofer(eChofer listado[],int tam, int id){
         printf("No existe\n");
     }
 
-}*/
+}
 
 void modificarChofer(eChofer listado[],int tam){
     int indice;
@@ -181,11 +176,7 @@ void modificarChofer(eChofer listado[],int tam){
                 listado[indice].edad = auxChofer.edad;
                 break;
             case 8:
-                printf("Sexo: ");
-                scanf("%c",&auxChofer.sexo);
-                while(auxChofer.sexo!='m' && auxChofer.sexo!='f'){
-                    printf("Error : por favor ingreselo de nuevo\n");
-                }
+                getChar(auxChofer.sexo,"Sexo : ","Error, por favor ingrese un sexo valido",'f','m');
                 listado[indice].sexo = auxChofer.sexo;
                 break;
         }
@@ -194,7 +185,6 @@ void modificarChofer(eChofer listado[],int tam){
     mostrarListadoChoferes(listado,MAX_CHOFERES);
 
 }
-
 
 void mostrarCamionesPorMarca(eCamion listado[],int tam,char* marca){
     int i;
@@ -206,12 +196,6 @@ void mostrarCamionesPorMarca(eCamion listado[],int tam,char* marca){
     }
 }
 
-
-
-
-
-
-
 void calcularPromedioEdad(eChofer listado[],int tam){
     int i;
     int promedioEdad = 0;
@@ -219,4 +203,25 @@ void calcularPromedioEdad(eChofer listado[],int tam){
         promedioEdad+=listado[i].edad;
     }
     printf("Promedio general de edad de choferes : %d",promedioEdad);
+}
+
+void calcularPromedioVaronesMujeres(eChofer listado[],int tam){
+    int i;
+    float promedioHombres;
+    float promedioMujeres;
+    int contadorHombres = 0;
+    int contadorMujeres = 0;
+    int totalChoferes = 0;
+    for(i=0;i<tam;i++){
+        if(listado[i].sexo=='f'){
+            contadorMujeres++;
+        }else if(listado[i].sexo=='m'){
+            contadorHombres++;
+        }
+        totalChoferes++;
+    }
+    promedioHombres = (float)contadorHombres/totalChoferes;
+    promedioMujeres = (float)contadorMujeres/totalChoferes;
+    printf("Promedio de hombres en total de choferes : %2.f\n",promedioHombres);
+    printf("Promedio de mujeres en total de choferes : %2.f\n",promedioMujeres);
 }

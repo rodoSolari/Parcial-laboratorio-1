@@ -131,6 +131,17 @@ void getDni(char* arrayString, char* message, char* errorMessage){
 
 }
 
+void getChar(char character, char* message, char* errorMessage,char primerValor,char segundoValor){
+    printf("%s", message);
+    fflush(stdin);
+    scanf("%c",&character);
+    while(character!=primerValor && character!=segundoValor){
+        printf("%s", errorMessage);
+        fflush(stdin);
+        scanf("%c",&character);
+    }
+}
+
 void getLong(long* number, char* message, char* errorMessage){
     char string[MAX_STRING];
     printf("%s", message);

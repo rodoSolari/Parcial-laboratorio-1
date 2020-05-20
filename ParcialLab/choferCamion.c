@@ -1,5 +1,21 @@
 
 #include "choferCamion.h"
+
+void imprimirMenu(){
+    printf("1. Mostrar listado de choferes:\n2. Mostrar listado de camiones\n3. Mostrar listado de choferes con sus respectivos camiones\n");
+    printf("4. Alta de camiones\n5.Baja de camiones\n6.Modificar camiones\n7.Alta chofer\n");
+    printf("8. Borrado de chofer en cascada\n9.Ordenar camiones por tipo\n");
+    printf("10. Modificacion de chofer\n11.Listar choferes con mas de un camion\n");
+    printf("12. Listar camiones con mas de 10 anios de antiguedad, y con sus respectivos choferes\n");
+    printf("13. Pedir una marca y solo listas los CAMIONES de esa marca\n");
+    printf("14. Ordenar a los CHOFERES por cantidades de CAMIONES y mostrarlos\n");
+    printf("15. Ordenar a los CHOFERES por cantidades de CAMIONES y por orden alfabético de los nombres y mostrarlos\n");
+    printf("16. Promedio de edad entre los CHOFERES\n");
+    printf("17. Promedio de años de antigüedad de flota de CAMIONES\n");
+    printf("18. Promedio que tengo entre varones y mujeres de mis CHOFERES");
+}
+
+
 void eliminarChoferConCamiones(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones){
     int indice;
     int id;
@@ -91,8 +107,80 @@ void listarCamionesConDiezAniosAntiguedad(eChofer listadoChoferes[],int tamChofe
     }
 }
 
-//punto 14
-void ordenarChoferesPorCantidadDeCamiones(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones){
 
+void ordenarChoferesPorCantidadDeCamiones(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones){
+    int i;
+    int j;
+
+    eChofer auxChofer[tamChoferes];
+    eCamionesPorChofer listadoCamionesPorChofer[tamChoferes];
+    eCamionesPorChofer auxCamionesPorChofer[tamChoferes];
+    contarCamionesPorChofer(listadoCamionesPorChofer,listadoChoferes,tamChoferes,listadoCamiones,tamCamiones);
+
+    for(i=0; i<tamChoferes-1;i++){
+        for(j=i+1; j<tamChoferes;j++){
+            if(listadoCamionesPorChofer[i].cantidadCamiones>listadoCamionesPorChofer[j].cantidadCamiones){
+                auxCamionesPorChofer[i] = listadoCamionesPorChofer[i];
+                listadoCamionesPorChofer[i] = listadoCamionesPorChofer[j];
+                listadoCamionesPorChofer[j] = auxCamionesPorChofer[i];
+
+                auxChofer[i] = listadoChoferes[i];
+                listadoChoferes[i] = listadoChoferes[j];
+                listadoChoferes[j] = auxChofer[i];
+            }
+        }
+    }
+    mostrarChoferesConCantidadCamiones(auxCamionesPorChofer,listadoChoferes,tamChoferes);
+}
+
+void mostrarChoferesConCantidadCamiones(eCamionesPorChofer listadoCamionesPorChofer[],eChofer listadoChoferes[],int tamChoferes){
+    int i;
+    for(i=0;i<tamChoferes;i++){
+        mostrarUnChofer(listadoChoferes[i]);
+        printf("Cantidad de camiones : %d\n",listadoCamionesPorChofer[i].cantidadCamiones);
+    }
+
+}
+
+void contarCamionesPorChofer(eCamionesPorChofer auxCamionesPorChofer[],eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones){
+    int i;
+    int j;
+    for(i=0;i<tamChoferes;i++){
+        auxCamionesPorChofer[i].cantidadCamiones=0;
+        auxCamionesPorChofer[i].idChofer=listadoChoferes[i].id;
+    }
+    for(i=0;i<tamChoferes;i++){
+        for(j=0;j<tamCamiones;j++){
+            if(listadoCamiones[j].idChofer==listadoChoferes[i].id){
+                auxCamionesPorChofer[i].cantidadCamiones++;
+            }
+        }
+    }
+}
+
+
+void ordenarChoferesPorCantidadDeCamionesNombre(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones){
+    int i;
+    int j;
+
+    eChofer auxChofer[tamChoferes];
+    eCamionesPorChofer listadoCamionesPorChofer[tamChoferes];
+    eCamionesPorChofer auxCamionesPorChofer[tamChoferes];
+    contarCamionesPorChofer(listadoCamionesPorChofer,listadoChoferes,tamChoferes,listadoCamiones,tamCamiones);
+
+    for(i=0; i<tamChoferes-1;i++){
+        for(j=i+1; j<tamChoferes;j++){
+            if(listadoCamionesPorChofer[i].cantidadCamiones>listadoCamionesPorChofer[j].cantidadCamiones || stricmp(listadoChoferes[i].nombre,listadoChoferes[j].nombre)>0){
+                auxCamionesPorChofer[i] = listadoCamionesPorChofer[i];
+                listadoCamionesPorChofer[i] = listadoCamionesPorChofer[j];
+                listadoCamionesPorChofer[j] = auxCamionesPorChofer[i];
+
+                auxChofer[i] = listadoChoferes[i];
+                listadoChoferes[i] = listadoChoferes[j];
+                listadoChoferes[j] = auxChofer[i];
+            }
+        }
+    }
+    mostrarChoferesConCantidadCamiones(auxCamionesPorChofer,listadoChoferes,tamChoferes);
 
 }

@@ -34,9 +34,10 @@ void mostrarChoferesDisponibles(eChofer listado[], int tam);
 void mostrarListadoChoferes(eChofer listado[], int tam);
 void mostrarUnChofer(eChofer chofer);
 void mostrarTodosLosChoferes(eChofer listado[], int tamChoferes,eCamion listadoCamiones[], int tamCamiones);
-//void eliminarChofer(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones);
+void eliminarChofer(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones);
 int buscarPosicionChofer(eChofer listado[],int tam, int id);
 void modificarChofer(eChofer listado[],int tam);
 void mostrarCamionesPorMarca(eCamion listado[],int tam,char* marca);
 void calcularPromedioEdad(eChofer listado[],int tam);
+void calcularPromedioVaronesMujeres(eChofer listado[],int tam);
 #endif // CHOFERES_H_INCLUDED
