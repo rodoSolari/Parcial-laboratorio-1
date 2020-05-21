@@ -53,13 +53,13 @@ void getFloat(float* number, char* message, char* errorMessage){
     }
 }
 
-void getInt(int* number, char* message, char* errorMessage){
+void getInt(int* number, char* message, char* errorMessage,int minimo,int maximo){
     char string[MAX_STRING];
     printf("%s", message);
     fflush(stdin);
     gets(string);
     *number=atoi(string);
-    while(isNumeric(string)==0){
+    while(isNumeric(string)==0 || *number<minimo || *number>maximo){
         printf("%s", errorMessage);
         fflush(stdin);
         gets(string);
@@ -130,51 +130,54 @@ int esMarca(char arrayString[]){
     return respuesta;
 }
 
-void getMarca(char* arrayString, char* message, char* errorMessage)
+void getMarca(char* arrayString, char* message, char* errorMessage){
+    printf("%s", message);
+    fflush(stdin);
+    gets(arrayString);
+
+    while(esMarca(arrayString)==0){
+        printf("%s", errorMessage);
+        fflush(stdin);
+        gets(arrayString);
+    }
+}
+
+//Debe ingresar numerico y caracteres
+void getPatente(char* arrayString, char* message, char* errorMessage)
 {
     printf("%s", message);
     fflush(stdin);
     gets(arrayString);
 
-    while(esString(arrayString)==1 && esMarca(arrayString)==1){
+    while(esString(arrayString)==0 || isNumeric(arrayString)==1){
         printf("%s", errorMessage);
         fflush(stdin);
         gets(arrayString);
     }
 }
 
-void getDni(char* arrayString, char* message, char* errorMessage){
+
+
+char getChar(char* message, char* errorMessage,char primerValor,char segundoValor){
+    char caracter;
     printf("%s", message);
     fflush(stdin);
-    gets(arrayString);
-    int number=atoi(arrayString);
-    while(isNumeric(arrayString)==0 && number>0){  //OJO, probar si funciona
+    scanf("%c",&caracter);
+    while(caracter!=primerValor && caracter!=segundoValor){
         printf("%s", errorMessage);
         fflush(stdin);
-        gets(arrayString);
-        number=atoi(arrayString);
+        scanf("%c",&caracter);
     }
-
+    return caracter;
 }
 
-void getChar(char character, char* message, char* errorMessage,char primerValor,char segundoValor){
-    printf("%s", message);
-    fflush(stdin);
-    scanf("%c",&character);
-    while(character!=primerValor && character!=segundoValor){
-        printf("%s", errorMessage);
-        fflush(stdin);
-        scanf("%c",&character);
-    }
-}
-
-void getLong(long* number, char* message, char* errorMessage){
+void getLong(long* number, char* message, char* errorMessage,int minimo,int maximo){
     char string[MAX_STRING];
     printf("%s", message);
     fflush(stdin);
     gets(string);
     *number=atol(string);
-    while(isNumeric(string)==0){
+    while(isNumeric(string)==0 || *number<minimo || *number>maximo){
         printf("%s", errorMessage);
         fflush(stdin);
         gets(string);

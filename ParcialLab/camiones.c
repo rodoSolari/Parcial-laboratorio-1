@@ -2,6 +2,8 @@
 #include "choferes.h"
 #include "funcionesParaValidarDatos.h"
 
+static int contadorIdCamion = 2000;
+
 void hardCodearCamiones(eCamion listado[],int tam){
     int id[TAM_HARDCODEO]={2000,2001,2002,2003,2004,2005,2006,2007,2008,2009};
     char patente[TAM_HARDCODEO][TAM_STRING]={"AA10","FJ38","AM24","FL28","FJ01","LX38","AA38","XC38","BF38","LU38"};
@@ -22,12 +24,21 @@ void hardCodearCamiones(eCamion listado[],int tam){
         strcpy(listado[i].tipo,tipo[i]);
         listado[i].idChofer = idChofer[i];
         listado[i].estado = OCUPADO;
+        contadorIdCamion++;
     }
+}
+
+void inicializarListadoCamiones(eCamion listado[],int tam){
+    int i;
+    for(i=0;i<tam;i++){
+        listado[i].estado = LIBRE;
+    }
+
 }
 
 void mostrarCamion(eCamion camion){
     printf("~~~Datos del camion : ~~~\n");
-    printf("id:%d\n patente : %s \tmarca:%s\tanio:%d\tpeso:%d cantidad de ruedas:%d\ntipo:%s\n",camion.id,
+    printf("id:%d\nPatente : %s \tMarca:%s\tAnio:%d\nPeso:%d \tcantidad de ruedas : %d\ntipo:%s\n",camion.id,
                                                                                             camion.patente,
                                                                                             camion.marca,
                                                                                             camion.anio,
@@ -35,21 +46,26 @@ void mostrarCamion(eCamion camion){
                                                                                             camion.cantidadDeRuedas,
                                                                                             camion.tipo);
 
+
 }
 
 void cargarCamion(eCamion listado[], int tam){
     eCamion nuevoCamion;
     int indice = buscarPosicionLibreCamion(listado,tam);
     if(indice!=-1){
-        getString(nuevoCamion.patente,"Patente : ","Error, por favor ingrese una patente valida\n");
-        getString(nuevoCamion.marca,"Marca de auto : ","Error, por favor ingrese una patente valida\n");
-        getInt(&nuevoCamion.anio,"Anio : ","Error, por favor ingrese una patente valida");
-        getInt(&nuevoCamion.peso,"Peso : ","Error, por favor ingrese un peso valido");
-        getInt(&nuevoCamion.cantidadDeRuedas,"Cantidad de ruedas : ","Error, por favor ingrese un valor valido\n");
+        getPatente(nuevoCamion.patente,"Patente : ","Error, por favor ingrese una patente valida\n");
+        getMarca(nuevoCamion.marca,"Marca de auto : ","Error, por favor ingrese una patente valida\n");
+        getInt(&nuevoCamion.anio,"Anio : ","Error, por favor ingrese una patente valida\n",1950,2020);
+        getInt(&nuevoCamion.peso,"Peso : ","Error, por favor ingrese un peso valido\n",0,30000);
+        getInt(&nuevoCamion.cantidadDeRuedas,"Cantidad de ruedas : ","Error, por favor ingrese un valor valido\n",4,40);
         getTipo(nuevoCamion.tipo,"Tipo : ","Error, por favor ingrese un tipo valido\n");
         nuevoCamion.estado = OCUPADO;
+        nuevoCamion.id = contadorIdCamion;
+        contadorIdCamion++;
         listado[indice] = nuevoCamion;
+
         printf("Agregado nuevo camion al listado\n");
+
     }else{
         printf("no hay espacio en la lista para agregar otro camion\n");
     }
@@ -67,20 +83,16 @@ int buscarPosicionLibreCamion(eCamion listado[],int tam){
     return respuesta;
 }
 
-void agregarNuevoCamion(eCamion listado[],int tam){
-    int indice = buscarPosicionLibreCamion(listado,tam);
-    if(indice!=-1){
-        cargarCamion(listado,tam);
-    }
-}
 
 void mostrarListadoCamiones(eCamion listado[],int tam){
     int i;
     printf("LISTADO DE CAMIONES\n");
     for(i=0;i<tam;i++){
-        mostrarCamion(listado[i]);
+        if(listado[i].estado==OCUPADO){
+            mostrarCamion(listado[i]);
+            printf("__________________________\n");
+        }
     }
-    printf("_____________________________________\n");
 }
 
 eCamion buscarCamion(eCamion listadoCamiones[],int tam, int id){
@@ -114,7 +126,7 @@ int buscarPosicionCamion(eCamion listadoCamiones[],int tam, int id){
 void eliminarCamion(eCamion listado[],int tam){
     int indice;
     int id;
-    getInt(&id,"Ingrese el ID a eliminar","Error : ingrese un numero valido");
+    getInt(&id,"Ingrese el ID a eliminar\n","Error : ingrese un numero valido",2000,2025);
     indice = buscarPosicionCamion(listado,tam,id);
     if(indice>=0){
         mostrarCamion(listado[indice]);
@@ -125,68 +137,59 @@ void eliminarCamion(eCamion listado[],int tam){
     }
 }
 
-/*void eliminarCamion(eCamion listado[],int tam, int id){
-    int indice;
-    getInt(id,"Ingrese el ID a eliminar","Error : ingrese un numero valido");
-    indice = buscarPosicionCamion(listado,tam,id);
-    if(indice>=0){
-        mostrarCamion(listado[indice]);
-        listado[indice].estado = LIBRE;
-        printf("Eliminado\n");
-    }else{
-        printf("No existe\n");
+void mostrarCamionesPorMarca(eCamion listado[],int tam){
+    int i;
+    char marca[MAX_STRING];
+    int contarCantidadPorMarca=0;
+    getMarca(marca,"Ingrese la marca que desea mostrar : ","error, por favor ingrese una marca valida : ");
+    printf("Lista de camiones de la marca %s :\n",marca);
+    for(i=0;i<tam;i++){
+        if(stricmp(listado[i].marca,marca)==0){
+            mostrarCamion(listado[i]);
+            contarCantidadPorMarca++;
+            printf("***************************\n");
+        }
     }
-}*/
-
-void modificarCamion(eCamion listado[],int tam){
-    int indice;
-    int id;
-    int opcion;
-    printf("Modificar camion\n");
-    getInt(&id,"Ingrese el ID a modificar","Error : ingrese un numero valido");
-    printf("1. Tipo de camion\n2. Chofer");
-    getInt(&opcion,"Ingrese la opcion a modificar","Error : ingrese un numero valido");
-    indice = buscarPosicionCamion(listado,tam,id);
-    switch(opcion){
-        case 1:
-            getString(listado[indice].tipo,"Ingrese el tipo : ","Error, Ingrese un tipo valido");
-            break;
-        case 2:
-            getInt(&listado[indice].idChofer,"Ingrese el id del chofer : ","Error, Ingrese un tipo valido");
-            break;
-        default:
-            printf("opcion incorrecta");
+    if(contarCantidadPorMarca==0){
+        printf("No hay camiones de la marca %s \n",marca);
     }
 }
 
 void ordenarCamionesPorTipo(eCamion listadoCamiones[],int tamCamiones){
     int i;
     int j;
-    eCamion auxCamion;
+    eCamion auxCamion; //Aux de camion para realizar el ordenamiento
 
     for(i=0; i<tamCamiones-1;i++){
-      //  if(listadoCamiones[i].estado==OCUPADO){
+        if(listadoCamiones[i].estado==OCUPADO){
             for(j=i+1; j<tamCamiones;j++){
-                if(stricmp(listadoCamiones[i].tipo,listadoCamiones[j].tipo)>0){
-                    auxCamion = listadoCamiones[i];
-                    listadoCamiones[i] = listadoCamiones[j];
-                    listadoCamiones[j] = auxCamion;
+                if(listadoCamiones[i].estado==OCUPADO){
+                    if(stricmp(listadoCamiones[i].tipo,listadoCamiones[j].tipo)>0){
+                        auxCamion = listadoCamiones[i];
+                        listadoCamiones[i] = listadoCamiones[j];
+                        listadoCamiones[j] = auxCamion;
+                    }
                 }
             }
-   //     }
+        }
     }
+
 }
 
 void calcularPromedioAntiguedadCamiones(eCamion listadoCamiones[],int tamCamiones){
     int i;
-    int promedioAntiguedad = 0;
+    int cantidadCamiones = 0;
+    int totalAntiguedad = 0;
+    float promedioAntiguedad;
     int antiguedadCamion;
     for(i=0; i<tamCamiones;i++){
         if(listadoCamiones[i].estado == OCUPADO){
             antiguedadCamion=2020-listadoCamiones[i].anio;
-            promedioAntiguedad+=antiguedadCamion;
+            totalAntiguedad+=antiguedadCamion;
+            cantidadCamiones++;
         }
     }
-    printf("Promedio de antiguedad de los camiones : %2.f",(float)promedioAntiguedad);
+    promedioAntiguedad = ((float)totalAntiguedad/cantidadCamiones);
+    printf("Promedio de antiguedad de los camiones : %.2f\n",(float)promedioAntiguedad);
 }
 

@@ -12,6 +12,8 @@ int main()
 {
     eChofer listaChoferes[MAX_CHOFERES];
     eCamion listaCamiones[MAX_CAMIONES];
+    inicializarListadoChoferes(listaChoferes,MAX_CHOFERES);
+    inicializarListadoCamiones(listaCamiones,CANT_CAMIONES);
     hardCodearChoferes(listaChoferes,CANT_CHOFERES);
     hardCodearCamiones(listaCamiones,CANT_CAMIONES);
 
@@ -22,23 +24,23 @@ int main()
         scanf("%d",&opcion);
         switch(opcion){
             case 1:
-                mostrarListadoChoferes(listaChoferes, CANT_CHOFERES);//punto 1
+                mostrarListadoChoferes(listaChoferes, MAX_CHOFERES);//punto 1
                 break;
             case 2:
-                mostrarListadoCamiones(listaCamiones, CANT_CAMIONES);
+                mostrarListadoCamiones(listaCamiones, MAX_CAMIONES);
                 break;
             case 3:
-                mostrarTodosLosChoferes(listaChoferes,CANT_CHOFERES,listaCamiones,CANT_CAMIONES);
+                mostrarTodosLosChoferesConCamiones(listaChoferes,CANT_CHOFERES,listaCamiones,CANT_CAMIONES);
                 break;
             case 4:
-                //cargarCamion(listaCamiones,MAX_CAMIONES);
+                cargarCamion(listaCamiones,MAX_CAMIONES);
                 mostrarChoferesDisponibles(listaChoferes,MAX_CHOFERES,listaCamiones,CANT_CAMIONES);
                 break;
             case 5:
                 eliminarCamion(listaCamiones,MAX_CAMIONES);
                 break;
             case 6:
-                modificarCamion(listaCamiones,MAX_CAMIONES);
+                modificarCamion(listaCamiones,MAX_CAMIONES,listaChoferes,MAX_CHOFERES);
                 break;
             case 7:
                 cargarChofer(listaChoferes,MAX_CHOFERES);
@@ -59,8 +61,7 @@ int main()
                 listarCamionesConDiezAniosAntiguedad(listaChoferes,MAX_CHOFERES,listaCamiones,MAX_CAMIONES);
                 break;
             case 13:
-                //getMarca()
-                mostrarCamionesPorMarca(listaCamiones,MAX_CAMIONES,"fiat");
+                mostrarCamionesPorMarca(listaCamiones,MAX_CAMIONES);
                 break;
             case 14:
                 ordenarChoferesPorCantidadDeCamiones(listaChoferes,MAX_CHOFERES,listaCamiones,MAX_CAMIONES);
@@ -77,8 +78,13 @@ int main()
             case 18:
                 calcularPromedioVaronesMujeres(listaChoferes,MAX_CHOFERES);
                 break;
-
+            default:
+                if(opcion!=19){
+                    printf("Opcion incorrecta, por favor ingrese un numero valido\n");
+                }
         }
+        system("pause");
+        system("cls");
     }while(opcion!=19);
     return 0;
 }

@@ -22,7 +22,7 @@ void getString(char* arrayString, char* message, char* errorMessage);
  * \param errorMessage Es el mensaje de Error a ser mostrado
  * \return -
  */
-void getInt(int* number, char message[], char errorMessage[]);
+void getInt(int* number, char* message, char* errorMessage,int minimo,int maximo);
 
 /**
  * \brief Verifica si la cadena ingresada es numerica
@@ -48,17 +48,53 @@ int isFloat(char stringNumber[]);
  */
 void getFloat(float* number, char* message, char* errorMessage);
 
+/**
+ * \brief Verifica si la cadena ingresada es flotante
+ * \param Cadena de caracteres a ser verificada
+ * \return Retorna 1 (vardadero) si la cadena es flotante y 0 (falso) si no lo es
+ */
+void getLong(long* number, char* message, char* errorMessage, int minimo, int maximo);
 
-void getDni(char* arrayString, char* message, char* errorMessage);
-
-void getLong(long* number, char* message, char* errorMessage);
-
-
+/**
+ * \brief Verifica si la cadena ingresada es flotante
+ * \param Cadena de caracteres a ser verificada
+ * \return Retorna 1 (vardadero) si la cadena es flotante y 0 (falso) si no lo es
+ */
 int esMarca(char arrayString[]);
+
+/**
+ * \brief Verifica si la cadena ingresada es flotante
+ * \param Cadena de caracteres a ser verificada
+ * \return Retorna 1 (vardadero) si la cadena es flotante y 0 (falso) si no lo es
+ */
 void getMarca(char* arrayString, char* message, char* errorMessage);
 
-void getChar(char character, char* message, char* errorMessage,char primerValor,char segundoValor);
+/**
+ * \brief Verifica si la cadena ingresada es flotante
+ * \param Cadena de caracteres a ser verificada
+ * \return Retorna 1 (vardadero) si la cadena es flotante y 0 (falso) si no lo es
+ */
+char getChar(char* message, char* errorMessage,char primerValor,char segundoValor);
 
+/**
+ * \brief Verifica si la cadena ingresada es flotante
+ * \param Cadena de caracteres a ser verificada
+ * \return Retorna 1 (vardadero) si la cadena es flotante y 0 (falso) si no lo es
+ */
 int esTipo(char arrayString[]);
+
+/**
+ * \brief Verifica si la cadena ingresada es flotante
+ * \param Cadena de caracteres a ser verificada
+ * \return Retorna 1 (vardadero) si la cadena es flotante y 0 (falso) si no lo es
+ */
 void getTipo(char* arrayString, char* message, char* errorMessage);
+
+
+/**
+ * \brief Verifica si la cadena ingresada es flotante
+ * \param Cadena de caracteres a ser verificada
+ * \return Retorna 1 (vardadero) si la cadena es flotante y 0 (falso) si no lo es
+ */
+void getPatente(char* arrayString, char* message, char* errorMessage);
 #endif // FUNCIONESPARAVALIDARDATOS_H_INCLUDED

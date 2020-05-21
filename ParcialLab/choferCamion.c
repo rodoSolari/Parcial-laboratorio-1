@@ -16,11 +16,87 @@ void imprimirMenu(){
 }
 
 
+void mostrarChoferesDisponibles(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[], int tamCamiones){
+    int i;
+    int j;
+    int tieneCamion;  //FLAG para verificar si cada chofer tiene o no por lo menos un camion
+    printf("Listado de choferes disponibles : \n");
+    for(i=0;i<tamChoferes;i++){
+        if(listadoChoferes[i].estado==OCUPADO){
+            tieneCamion=0;
+            for(j=0;j<tamCamiones;j++){
+                if(listadoChoferes[i].id == listadoCamiones[j].idChofer){
+                    tieneCamion++;
+                }
+                if(tieneCamion==0 && j==tamCamiones-1){
+                    mostrarUnChofer(listadoChoferes[i]);
+                }
+            }
+        }
+    }
+}
+
+void mostrarTodosLosChoferesConCamiones(eChofer listadoChoferes[], int tamChoferes,eCamion listadoCamiones[], int tamCamiones){
+    int i;
+    int j;
+    int tieneCamion;  //FLAG para verificar si cada chofer tiene o no por lo menos un camion
+    for(i=0; i<tamChoferes; i++){
+        if(listadoChoferes[i].estado==OCUPADO){
+            tieneCamion=0;
+            mostrarUnChofer(listadoChoferes[i]);
+            for(j = 0;j<tamCamiones;j++){
+                if(listadoChoferes[i].id == listadoCamiones[j].idChofer){
+                    mostrarCamion(listadoCamiones[j]);
+                    tieneCamion++;
+                }
+                if(tieneCamion==0 && j==tamCamiones-1){
+                    printf("No tiene camiones al mando\n");
+                }
+            }
+            printf("*************************************\n");
+        }
+   }
+}
+
+void modificarCamion(eCamion listaCamiones[],int tamCamiones,eChofer listaChoferes[],int tamChoferes){
+    int indiceCamion;
+    int indiceChofer;
+    int id;
+    int opcion;
+
+    printf("Modificar camion\n");
+    getInt(&id,"Ingrese el ID a modificar\n","Error : ingrese un numero valido\n",2000,2025);
+    printf("1. Tipo de camion\n2. Chofer\n");
+    getInt(&opcion,"Ingrese la opcion a modificar","Error : ingrese un numero valido\n",1,2);
+    indiceCamion = buscarPosicionCamion(listaCamiones,tamCamiones,id);
+    switch(opcion){
+        case 1:
+            getTipo(listaCamiones[indiceCamion].tipo,"Ingrese el tipo : ","Error, Ingrese un tipo valido\n");
+            printf("Modificado con exito\n");
+            mostrarCamion(listaCamiones[indiceCamion]);
+            break;
+        case 2:
+            getInt(&id,"Ingrese el id del chofer : ","Error, Ingrese un tipo valido\n",1,18);
+            indiceChofer = buscarPosicionChofer(listaChoferes,tamChoferes,id);
+            if(indiceChofer!=-1){
+                listaCamiones[indiceCamion].idChofer = id;
+            }else{
+                printf("Ha ingresado un id que no existe en la lista de choferes\n");
+            }
+            mostrarCamion(listaCamiones[indiceCamion]);
+            break;
+        default:
+            printf("opcion incorrecta\n");
+    }
+}
+
+
 void eliminarChoferConCamiones(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones){
     int indice;
     int id;
     int i;
-    getInt(&id,"Ingrese el ID a eliminar","Error : ingrese un numero valido");
+
+    getInt(&id,"Ingrese el ID a eliminar","Error : ingrese un numero valido\n",1,18);
     indice = buscarPosicionChofer(listadoChoferes,tamChoferes,id);
     if(indice>=0){
         mostrarUnChofer(listadoChoferes[indice]);
@@ -40,24 +116,30 @@ void eliminarChoferConCamiones(eChofer listadoChoferes[],int tamChoferes,eCamion
 void mostrarChoferesPorTipoCamion(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones, int tamTipos){
     ordenarCamionesPorTipo(listadoCamiones,tamCamiones);
     char tipoCamion[TAM_TIPOS][TAM_STRING]={"Corta distancia","Larga distancia"};
-    int i;
-    int j;
-    int k;
+    int i;  //cantidad de choferes
+    int j;  //cantidad de camiones
+    int k;  //tipos de camiones
     for(k=0;k<tamTipos;k++){
-        printf("Choferes con tipo de camion %s\n",tipoCamion[k]);
+        printf("<<<<<CHOFERES CON TIPO DE CAMION : %s>>>>>>\n",tipoCamion[k]);
         for(i=0; i<tamChoferes; i++){
             if(listadoChoferes[i].estado==OCUPADO){
                 for(j = 0;j<tamCamiones;j++){
                      if(listadoCamiones[j].estado==OCUPADO){
                         if((listadoChoferes[i].id == listadoCamiones[j].idChofer)&&(stricmp(listadoCamiones[j].tipo,tipoCamion[k])==0)){
+                            printf("CHOFER : \n");
                             mostrarUnChofer(listadoChoferes[i]);
+                            printf("CAMION A CARGO : \n");
+                            mostrarCamion(listadoCamiones[j]);
                         }
                      }
                 }
             }
         }
+        printf("*********************************************\n");
    }
 }
+
+
 
 
 void mostrarChoferesConMasDeUnCamion(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones){
@@ -83,19 +165,10 @@ void mostrarChoferesConMasDeUnCamion(eChofer listadoChoferes[],int tamChoferes,e
 
 }
 
-/*eChofer buscarDuenioCamion(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones){
-    int i;
-    int j;
-    eChofer aux
-    for(){
-        for()
-    }
-}
-*/
 void listarCamionesConDiezAniosAntiguedad(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones){
     int i;
     int j;
-    int encontreDuenio;
+    int encontreDuenio; //FLAG para verificar si el camion tiene o no chofer a cargo
     printf("Camiones con mas de 10 anios de antiguedad\n");
     for(i = 0;i<tamCamiones;i++){
         if(listadoCamiones[i].estado==OCUPADO){
@@ -104,9 +177,11 @@ void listarCamionesConDiezAniosAntiguedad(eChofer listadoChoferes[],int tamChofe
                 mostrarCamion(listadoCamiones[i]);
                 printf("Chofer que lo conduce : \n");
                 for(j=0;j<tamChoferes;j++){
-                    if(listadoCamiones[i].idChofer == listadoChoferes[j].id){
-                        encontreDuenio=1;
-                        mostrarUnChofer(listadoChoferes[i]);
+                    if(listadoChoferes[j].estado==OCUPADO){
+                        if(listadoCamiones[i].idChofer == listadoChoferes[j].id){
+                            encontreDuenio=1;
+                            mostrarUnChofer(listadoChoferes[j]);
+                        }
                     }
                 }
             }
@@ -122,27 +197,31 @@ void ordenarChoferesPorCantidadDeCamiones(eChofer listadoChoferes[],int tamChofe
     int i;
     int j;
 
-    eChofer auxChofer[tamChoferes];
+    eChofer auxChofer; //Aux para hacer el ordenamiento de la lista de choferes
+
     eCamionesPorChofer listadoCamionesPorChofer[tamChoferes];
-    eCamionesPorChofer auxCamionesPorChofer[tamChoferes];
+    eCamionesPorChofer auxCamionesPorChofer; //Aux para hacer el ordenamiento del listado de camiones por chofer
+
+    //mando el listado de camiones por chofer(vacio) con el listado de choferes y asi tener la cantidad de camiones de cada chofer
     contarCamionesPorChofer(listadoCamionesPorChofer,listadoChoferes,tamChoferes,listadoCamiones,tamCamiones);
 
     for(i=0; i<tamChoferes-1;i++){
         if(listadoChoferes[i].estado==OCUPADO){
             for(j=i+1; j<tamChoferes;j++){
                 if(listadoCamionesPorChofer[i].cantidadCamiones>listadoCamionesPorChofer[j].cantidadCamiones){
-                    auxCamionesPorChofer[i] = listadoCamionesPorChofer[i];
-                    listadoCamionesPorChofer[i] = listadoCamionesPorChofer[j];
-                    listadoCamionesPorChofer[j] = auxCamionesPorChofer[i];
 
-                    auxChofer[i] = listadoChoferes[i];
+                    auxCamionesPorChofer = listadoCamionesPorChofer[i];
+                    listadoCamionesPorChofer[i] = listadoCamionesPorChofer[j];
+                    listadoCamionesPorChofer[j] = auxCamionesPorChofer;
+
+                    auxChofer = listadoChoferes[i];
                     listadoChoferes[i] = listadoChoferes[j];
-                    listadoChoferes[j] = auxChofer[i];
+                    listadoChoferes[j] = auxChofer;
                 }
             }
         }
     }
-    mostrarChoferesConCantidadCamiones(auxCamionesPorChofer,listadoChoferes,tamChoferes);
+    mostrarChoferesConCantidadCamiones(listadoCamionesPorChofer,listadoChoferes,tamChoferes);
 }
 
 void mostrarChoferesConCantidadCamiones(eCamionesPorChofer listadoCamionesPorChofer[],eChofer listadoChoferes[],int tamChoferes){
@@ -151,25 +230,27 @@ void mostrarChoferesConCantidadCamiones(eCamionesPorChofer listadoCamionesPorCho
         if(listadoChoferes[i].estado == OCUPADO){
             mostrarUnChofer(listadoChoferes[i]);
             printf("Cantidad de camiones : %d\n",listadoCamionesPorChofer[i].cantidadCamiones);
+            printf("\n");
         }
     }
 }
 
-void contarCamionesPorChofer(eCamionesPorChofer auxCamionesPorChofer[],eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones){
+void contarCamionesPorChofer(eCamionesPorChofer listadoCamionesPorChofer[],eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones){
     int i;
     int j;
+    //inicializo primero el listado de camiones por chofer con los id de cada chofer y el contador en cero
     for(i=0;i<tamChoferes;i++){
         if(listadoChoferes[i].estado==OCUPADO){
-            auxCamionesPorChofer[i].cantidadCamiones=0;
-            auxCamionesPorChofer[i].idChofer=listadoChoferes[i].id;
+            listadoCamionesPorChofer[i].cantidadCamiones=0;
+            listadoCamionesPorChofer[i].idChofer=listadoChoferes[i].id;
         }
     }
     for(i=0;i<tamChoferes;i++){
         if(listadoChoferes[i].estado==OCUPADO){
-            for(j=0;j<tamCamiones;j++){
+            for(j=0;j<tamCamiones;j++){  //Por cada chofer reviso el listado de camiones para contar cuantos camiones tiene a cargo
                 if(listadoCamiones[j].estado == OCUPADO){
                     if(listadoCamiones[j].idChofer==listadoChoferes[i].id){
-                        auxCamionesPorChofer[i].cantidadCamiones++;
+                        listadoCamionesPorChofer[i].cantidadCamiones++;
                     }
                 }
             }
@@ -182,24 +263,27 @@ void ordenarChoferesPorCantidadDeCamionesNombre(eChofer listadoChoferes[],int ta
     int i;
     int j;
 
-    eChofer auxChofer[tamChoferes];
+    eChofer auxChofer; //Aux de camion para realizar el ordenamiento
+
     eCamionesPorChofer listadoCamionesPorChofer[tamChoferes];
-    eCamionesPorChofer auxCamionesPorChofer[tamChoferes];
+    eCamionesPorChofer auxCamionesPorChofer; //Aux para hacer el ordenamiento del listado de camiones por chofer
+
+    //mando el listado de camiones por chofer(vacio) con el listado de choferes y asi tener la cantidad de camiones de cada chofer
     contarCamionesPorChofer(listadoCamionesPorChofer,listadoChoferes,tamChoferes,listadoCamiones,tamCamiones);
 
     for(i=0; i<tamChoferes-1;i++){
         for(j=i+1; j<tamChoferes;j++){
             if(listadoCamionesPorChofer[i].cantidadCamiones>listadoCamionesPorChofer[j].cantidadCamiones || stricmp(listadoChoferes[i].nombre,listadoChoferes[j].nombre)>0){
-                auxCamionesPorChofer[i] = listadoCamionesPorChofer[i];
+                auxCamionesPorChofer = listadoCamionesPorChofer[i];
                 listadoCamionesPorChofer[i] = listadoCamionesPorChofer[j];
-                listadoCamionesPorChofer[j] = auxCamionesPorChofer[i];
+                listadoCamionesPorChofer[j] = auxCamionesPorChofer;
 
-                auxChofer[i] = listadoChoferes[i];
+                auxChofer = listadoChoferes[i];
                 listadoChoferes[i] = listadoChoferes[j];
-                listadoChoferes[j] = auxChofer[i];
+                listadoChoferes[j] = auxChofer;
             }
         }
     }
-    mostrarChoferesConCantidadCamiones(auxCamionesPorChofer,listadoChoferes,tamChoferes);
+    mostrarChoferesConCantidadCamiones(listadoCamionesPorChofer,listadoChoferes,tamChoferes);
 
 }

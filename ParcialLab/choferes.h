@@ -29,16 +29,13 @@ typedef struct{
     int estado;
 }eChofer;
 
+void inicializarListadoChoferes(eChofer listado[],int tam);
 void hardCodearChoferes(eChofer listado[],int tam);
-void mostrarChoferesDisponibles(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[], int tamCamiones);
 void mostrarListadoChoferes(eChofer listado[], int tam);
 void mostrarUnChofer(eChofer chofer);
-void mostrarTodosLosChoferes(eChofer listadoChoferes[], int tamChoferes,eCamion listadoCamiones[], int tamCamiones);
-void eliminarChofer(eChofer listadoChoferes[],int tamChoferes,eCamion listadoCamiones[],int tamCamiones);
 int buscarPosicionChofer(eChofer listado[],int tam, int id);
 int buscarPosicionLibreChofer(eChofer listado[],int tam);
 void modificarChofer(eChofer listado[],int tam);
-void mostrarCamionesPorMarca(eCamion listado[],int tam,char* marca);
 void calcularPromedioEdad(eChofer listado[],int tam);
 void calcularPromedioVaronesMujeres(eChofer listado[],int tam);
 void cargarChofer(eChofer listado[],int tam);
