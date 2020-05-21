@@ -37,19 +37,25 @@ void mostrarCamion(eCamion camion){
 
 }
 
-eCamion cargarCamion(){
+void cargarCamion(eCamion listado[], int tam){
     eCamion nuevoCamion;
-    getString(nuevoCamion.patente,"Patente : ","Error, por favor ingrese una patente valida\n");
-    getString(nuevoCamion.marca,"Marca de auto : ","Error, por favor ingrese una patente valida\n");
-    getInt(&nuevoCamion.anio,"Anio : ","Error, por favor ingrese una patente valida");
-    getInt(&nuevoCamion.peso,"Peso","Error, por favor ingrese un peso valido");
-    getInt(&nuevoCamion.cantidadDeRuedas,"Cantidad de ruedas","Error, por favor ingrese un valor valido\n");
-    getString(nuevoCamion.tipo,"Tipo : ","Error, por favor ingrese un tipo valido\n");
-    nuevoCamion.estado = OCUPADO;
-    return nuevoCamion;
+    int indice = buscarPosicionLibreCamion(listado,tam);
+    if(indice!=-1){
+        getString(nuevoCamion.patente,"Patente : ","Error, por favor ingrese una patente valida\n");
+        getString(nuevoCamion.marca,"Marca de auto : ","Error, por favor ingrese una patente valida\n");
+        getInt(&nuevoCamion.anio,"Anio : ","Error, por favor ingrese una patente valida");
+        getInt(&nuevoCamion.peso,"Peso : ","Error, por favor ingrese un peso valido");
+        getInt(&nuevoCamion.cantidadDeRuedas,"Cantidad de ruedas : ","Error, por favor ingrese un valor valido\n");
+        getTipo(nuevoCamion.tipo,"Tipo : ","Error, por favor ingrese un tipo valido\n");
+        nuevoCamion.estado = OCUPADO;
+        listado[indice] = nuevoCamion;
+        printf("Agregado nuevo camion al listado\n");
+    }else{
+        printf("no hay espacio en la lista para agregar otro camion\n");
+    }
 }
 
-int buscarPosicionLibre(eCamion listado[],int tam){
+int buscarPosicionLibreCamion(eCamion listado[],int tam){
     int respuesta=-1;
     int i;
     for(i=0;i<tam;i++){
@@ -62,9 +68,9 @@ int buscarPosicionLibre(eCamion listado[],int tam){
 }
 
 void agregarNuevoCamion(eCamion listado[],int tam){
-    int indice = buscarPosicionLibre(listado,tam);
+    int indice = buscarPosicionLibreCamion(listado,tam);
     if(indice!=-1){
-        listado[indice]=cargarCamion();
+        cargarCamion(listado,tam);
     }
 }
 
@@ -159,13 +165,15 @@ void ordenarCamionesPorTipo(eCamion listadoCamiones[],int tamCamiones){
     eCamion auxCamion;
 
     for(i=0; i<tamCamiones-1;i++){
-        for(j=i+1; j<tamCamiones;j++){
-            if(stricmp(listadoCamiones[i].tipo,listadoCamiones[j].tipo)>0){
-                auxCamion = listadoCamiones[i];
-                listadoCamiones[i] = listadoCamiones[j];
-                listadoCamiones[j] = auxCamion;
+      //  if(listadoCamiones[i].estado==OCUPADO){
+            for(j=i+1; j<tamCamiones;j++){
+                if(stricmp(listadoCamiones[i].tipo,listadoCamiones[j].tipo)>0){
+                    auxCamion = listadoCamiones[i];
+                    listadoCamiones[i] = listadoCamiones[j];
+                    listadoCamiones[j] = auxCamion;
+                }
             }
-        }
+   //     }
     }
 }
 
@@ -174,8 +182,10 @@ void calcularPromedioAntiguedadCamiones(eCamion listadoCamiones[],int tamCamione
     int promedioAntiguedad = 0;
     int antiguedadCamion;
     for(i=0; i<tamCamiones;i++){
-        antiguedadCamion=2020-listadoCamiones[i].anio;
-        promedioAntiguedad+=antiguedadCamion;
+        if(listadoCamiones[i].estado == OCUPADO){
+            antiguedadCamion=2020-listadoCamiones[i].anio;
+            promedioAntiguedad+=antiguedadCamion;
+        }
     }
     printf("Promedio de antiguedad de los camiones : %2.f",(float)promedioAntiguedad);
 }

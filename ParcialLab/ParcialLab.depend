@@ -1,61 +1,41 @@
 # depslib dependency file v1.0
-1589467946 source:c:\users\montreal\desktop\parcial\parciallab\choferes.c
+1590019373 source:c:\users\rodolfo\desktop\parcial hecho\parcial-laboratorio-1-master\parciallab\camiones.c
+	"camiones.h"
 	"choferes.h"
+	"funcionesParaValidarDatos.h"
 
-1589468891 c:\users\montreal\desktop\parcial\parciallab\choferes.h
+1590001571 c:\users\rodolfo\desktop\parcial hecho\parcial-laboratorio-1-master\parciallab\camiones.h
+	<string.h>
+
+1590008016 c:\users\rodolfo\desktop\parcial hecho\parcial-laboratorio-1-master\parciallab\choferes.h
 	<string.h>
 	<stdio.h>
 	"camiones.h"
 
-1589467299 source:c:\users\montreal\desktop\parcial\parciallab\main.c
-	<stdio.h>
-	<stdlib.h>
-	"choferes.h"
+1590000911 c:\users\rodolfo\desktop\parcial hecho\parcial-laboratorio-1-master\parciallab\funcionesparavalidardatos.h
 
-1589468008 source:c:\users\montreal\desktop\parcial\parciallab\camiones.c
-	"camiones.h"
-	"choferes.h"
-
-1589468002 c:\users\montreal\desktop\parcial\parciallab\camiones.h
-	<string.h>
-
-1589954654 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\main.c
-	<stdio.h>
-	<stdlib.h>
-	"choferes.h"
-	"choferCamion.h"
-	"choferCamion.h"
+1589998731 source:c:\users\rodolfo\desktop\parcial hecho\parcial-laboratorio-1-master\parciallab\chofercamion.c
 	"choferCamion.h"
 
-1589952507 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\choferes.h
-	<string.h>
-	<stdio.h>
-	"camiones.h"
+1589954910 c:\users\rodolfo\desktop\parcial hecho\parcial-laboratorio-1-master\parciallab\chofercamion.h
+	"choferes.h"
+	"funcionesParaValidarDatos.h"
 
-1589952255 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\camiones.h
-	<string.h>
+1590018125 source:c:\users\rodolfo\desktop\parcial hecho\parcial-laboratorio-1-master\parciallab\choferes.c
+	"choferes.h"
+	"funcionesParaValidarDatos.h"
 
-1589953766 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\funcionesparavalidardatos.c
+1590001083 source:c:\users\rodolfo\desktop\parcial hecho\parcial-laboratorio-1-master\parciallab\funcionesparavalidardatos.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"funcionesParaValidarDatos.h"
 
-1589953760 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\funcionesparavalidardatos.h
-
-1589953982 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\choferes.c
+1590002938 source:c:\users\rodolfo\desktop\parcial hecho\parcial-laboratorio-1-master\parciallab\main.c
+	<stdio.h>
+	<stdlib.h>
 	"choferes.h"
-	"funcionesParaValidarDatos.h"
-
-1589952446 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\camiones.c
-	"camiones.h"
-	"choferes.h"
-	"funcionesParaValidarDatos.h"
-
-1589951545 source:c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\chofercamion.c
 	"choferCamion.h"
-
-1589954568 c:\users\montreal\desktop\lab y prog 1\parcial\parciallab\chofercamion.h
-	"choferes.h"
-	"funcionesParaValidarDatos.h"
+	"choferCamion.h"
+	"choferCamion.h"
 

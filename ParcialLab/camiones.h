@@ -19,10 +19,11 @@ void mostrarListadoCamiones(eCamion listado[],int tam);
 void hardCodearCamiones(eCamion listado[],int tam);
 void mostrarCamion(eCamion camion);
 eCamion buscarCamion(eCamion listadoCamiones[],int tam, int id);
-eCamion cargarCamion();
-int buscarPosicionLibre(eCamion listado[],int tam);
+void cargarCamion(eCamion listado[], int tam);
+int buscarPosicionLibreCamion(eCamion listado[],int tam);
 int buscarPosicionCamion(eCamion listadoCamiones[],int tam, int id);
 void eliminarCamion(eCamion listado[],int tam);
 void ordenarCamionesPorTipo(eCamion listadoCamiones[],int tamCamiones);
 void calcularPromedioAntiguedadCamiones(eCamion listadoCamiones[],int tamCamiones);
+void modificarCamion(eCamion listado[],int tam);
 #endif // CAMIONES_H_INCLUDED

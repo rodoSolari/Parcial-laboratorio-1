@@ -58,4 +58,7 @@ int esMarca(char arrayString[]);
 void getMarca(char* arrayString, char* message, char* errorMessage);
 
 void getChar(char character, char* message, char* errorMessage,char primerValor,char segundoValor);
+
+int esTipo(char arrayString[]);
+void getTipo(char* arrayString, char* message, char* errorMessage);
 #endif // FUNCIONESPARAVALIDARDATOS_H_INCLUDED

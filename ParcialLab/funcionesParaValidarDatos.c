@@ -92,6 +92,32 @@ void getString(char* arrayString, char* message, char* errorMessage)
     }
 }
 
+int esTipo(char arrayString[]){
+    int respuesta=0;
+    char tipos[2][MAX_STRING]={"Larga distancia","Corta distancia"};
+    for(int i=0; i<2; i++){
+        if(stricmp(tipos[i],arrayString)==0){
+            respuesta=1;
+            break;
+        }
+    }
+    return respuesta;
+}
+
+void getTipo(char* arrayString, char* message, char* errorMessage)
+{
+    printf("%s", message);
+    fflush(stdin);
+    gets(arrayString);
+
+    while(esTipo(arrayString)==0){
+        printf("%s", errorMessage);
+        fflush(stdin);
+        gets(arrayString);
+    }
+}
+
+
 int esMarca(char arrayString[]){
     int respuesta=0;
     char marcas[3][MAX_STRING]={"ford","fiat","wv"};
