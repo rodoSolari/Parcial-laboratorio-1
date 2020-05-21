@@ -54,10 +54,10 @@
 
 1590047506 c:\users\montreal\desktop\parciallab\funcionesparavalidardatos.h
 
-1590044840 source:c:\users\montreal\desktop\parciallab\chofercamion.c
+1590047988 source:c:\users\montreal\desktop\parciallab\chofercamion.c
 	"choferCamion.h"
 
-1590043646 c:\users\montreal\desktop\parciallab\chofercamion.h
+1590047988 c:\users\montreal\desktop\parciallab\chofercamion.h
 	"choferes.h"
 	"funcionesParaValidarDatos.h"
 
@@ -71,11 +71,16 @@
 	<string.h>
 	"funcionesParaValidarDatos.h"
 
-1590044583 source:c:\users\montreal\desktop\parciallab\main.c
+1590047986 source:c:\users\montreal\desktop\parciallab\main.c
 	<stdio.h>
 	<stdlib.h>
 	"choferes.h"
 	"choferCamion.h"
-	"choferCamion.h"
-	"choferCamion.h"
+	"menu.h"
+
+1590048007 c:\users\montreal\desktop\parciallab\menu.h
+	<stdio.h>
+
+1590048615 source:c:\users\montreal\desktop\parciallab\menu.c
+	"menu.h"
 

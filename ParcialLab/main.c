@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include "choferes.h"
 #include "choferCamion.h"
-#include "choferCamion.h"
-#include "choferCamion.h"
+#include "menu.h"
 #define CANT_CHOFERES 6
 #define CANT_CAMIONES 10
 #define MAX_CAMIONES 25

@@ -9,12 +9,7 @@ typedef struct{      //Estructura para contar los camiones que tiene cada chofer
     int cantidadCamiones;
 
 }eCamionesPorChofer;
-/**
- * \brief Imprime por pantalla el menu inicial
- * \param -
- * \return -
- */
-void imprimirMenu();
+
 
 /**
  * \brief Muestra los choferes disponibles
