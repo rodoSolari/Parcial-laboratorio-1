@@ -56,7 +56,7 @@ void cargarCamion(eCamion listado[], int tam){
         getPatente(nuevoCamion.patente,"Patente : ","Error, por favor ingrese una patente valida\n");
         getMarca(nuevoCamion.marca,"Marca de auto : ","Error, por favor ingrese una patente valida\n");
         getInt(&nuevoCamion.anio,"Anio : ","Error, por favor ingrese una patente valida\n",1950,2020);
-        getInt(&nuevoCamion.peso,"Peso : ","Error, por favor ingrese un peso valido\n",0,30000);
+        getInt(&nuevoCamion.peso,"Peso : ","Error, por favor ingrese un peso valido\n",500,30000);
         getInt(&nuevoCamion.cantidadDeRuedas,"Cantidad de ruedas : ","Error, por favor ingrese un valor valido\n",4,40);
         getTipo(nuevoCamion.tipo,"Tipo : ","Error, por favor ingrese un tipo valido\n");
         nuevoCamion.estado = OCUPADO;

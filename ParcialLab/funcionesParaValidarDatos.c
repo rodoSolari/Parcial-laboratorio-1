@@ -4,7 +4,7 @@
 
 #include "funcionesParaValidarDatos.h"
 
-int isNumeric(char stringNumber[]){
+int esNumerico(char stringNumber[]){
     int respuesta=1;
     int i;
 
@@ -17,7 +17,7 @@ int isNumeric(char stringNumber[]){
     return respuesta;
 }
 
-int isFloat(char stringNumber[]){
+int esFloat(char stringNumber[]){
     int i=0;
 	int retorno = 1;
 	int contadorPuntos=0;
@@ -45,7 +45,7 @@ void getFloat(float* number, char* message, char* errorMessage){
     gets(string);
     *number=atof(string);
 
-    while(isFloat(string)==0){
+    while(esFloat(string)==0){
         printf("%s", errorMessage);
         fflush(stdin);
         gets(string);
@@ -59,7 +59,7 @@ void getInt(int* number, char* message, char* errorMessage,int minimo,int maximo
     fflush(stdin);
     gets(string);
     *number=atoi(string);
-    while(isNumeric(string)==0 || *number<minimo || *number>maximo){
+    while(esNumerico(string)==0 || *number<minimo || *number>maximo){
         printf("%s", errorMessage);
         fflush(stdin);
         gets(string);
@@ -69,10 +69,10 @@ void getInt(int* number, char* message, char* errorMessage,int minimo,int maximo
 
 
 int esString(char arrayString[]){
-    int respuesta=0;
+    int respuesta=1;
     for(int i=0; arrayString[i]!='\0'; i++){
         if((arrayString[i]<'a' || arrayString[i]>'z') && (arrayString[i]<'A' || arrayString[i]>'Z')){
-            respuesta=1;
+            respuesta=0;
             break;
         }
     }
@@ -85,7 +85,7 @@ void getString(char* arrayString, char* message, char* errorMessage)
     fflush(stdin);
     gets(arrayString);
 
-    while(esString(arrayString)==1){
+    while(esString(arrayString)==0){
         printf("%s", errorMessage);
         fflush(stdin);
         gets(arrayString);
@@ -149,7 +149,7 @@ void getPatente(char* arrayString, char* message, char* errorMessage)
     fflush(stdin);
     gets(arrayString);
 
-    while(esString(arrayString)==0 || isNumeric(arrayString)==1){
+    while((esString(arrayString)==0 && esNumerico(arrayString)==1) || (esString(arrayString)==1 && esNumerico(arrayString)==0)){
         printf("%s", errorMessage);
         fflush(stdin);
         gets(arrayString);
@@ -177,7 +177,7 @@ void getLong(long* number, char* message, char* errorMessage,int minimo,int maxi
     fflush(stdin);
     gets(string);
     *number=atol(string);
-    while(isNumeric(string)==0 || *number<minimo || *number>maximo){
+    while(esNumerico(string)==0 || *number<minimo || *number>maximo){
         printf("%s", errorMessage);
         fflush(stdin);
         gets(string);

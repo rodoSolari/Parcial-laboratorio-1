@@ -48,6 +48,7 @@ void mostrarTodosLosChoferesConCamiones(eChofer listadoChoferes[], int tamChofer
             for(j = 0;j<tamCamiones;j++){
                 if(listadoChoferes[i].id == listadoCamiones[j].idChofer){
                     mostrarCamion(listadoCamiones[j]);
+                    printf("\n");
                     tieneCamion++;
                 }
                 if(tieneCamion==0 && j==tamCamiones-1){

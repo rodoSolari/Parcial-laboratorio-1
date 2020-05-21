@@ -29,14 +29,14 @@ void getInt(int* number, char* message, char* errorMessage,int minimo,int maximo
  * \param Cadena de caracteres a ser verificada
  * \return Retorna 1 (vardadero) si la cadena es flotante y 0 (falso) si no lo es
  */
-int isNumeric(char stringNumber[]);
+int esNumerico(char stringNumber[]);
 
 /**
  * \brief Verifica si la cadena ingresada es flotante
  * \param Cadena de caracteres a ser verificada
  * \return Retorna 1 (vardadero) si la cadena es flotante y 0 (falso) si no lo es
  */
-int isFloat(char stringNumber[]);
+int esFloat(char stringNumber[]);
 
 
 /**
@@ -63,9 +63,9 @@ void getLong(long* number, char* message, char* errorMessage, int minimo, int ma
 int esMarca(char arrayString[]);
 
 /**
- * \brief Verifica si la cadena ingresada es flotante
+ * \brief Verifica si la cadena ingresada es una marca
  * \param Cadena de caracteres a ser verificada
- * \return Retorna 1 (vardadero) si la cadena es flotante y 0 (falso) si no lo es
+ * \return Retorna 1 (vardadero) si la cadena es una marca y 0 (falso) si no lo es
  */
 void getMarca(char* arrayString, char* message, char* errorMessage);
 
