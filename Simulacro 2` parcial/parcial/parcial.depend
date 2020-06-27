@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1593246662 source:c:\users\montreal\desktop\simulacro 2` parcial\parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"parser.h"
+	"piloto.h"
+	"vuelo.h"
+	"Controller.h"
+
+1593179068 c:\users\montreal\desktop\simulacro 2` parcial\parcial\linkedlist.h
+
+1593238786 source:c:\users\montreal\desktop\simulacro 2` parcial\parcial\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1592092042 source:c:\users\montreal\desktop\simulacro 2` parcial\parcial\validardatos.c
+	"ValidarDatos.h"
+
+1592092042 c:\users\montreal\desktop\simulacro 2` parcial\parcial\validardatos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1593174804 source:c:\users\montreal\desktop\simulacro 2` parcial\parcial\piloto.c
+	"piloto.h"
+
+1593173649 c:\users\montreal\desktop\simulacro 2` parcial\parcial\piloto.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+
+1593242288 source:c:\users\montreal\desktop\simulacro 2` parcial\parcial\parser.c
+	"parser.h"
+
+1593242295 c:\users\montreal\desktop\simulacro 2` parcial\parcial\parser.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Vuelo.h"
+
+1593247330 c:\users\montreal\desktop\simulacro 2` parcial\parcial\vuelo.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"piloto.h"
+
+1593263119 source:c:\users\montreal\desktop\simulacro 2` parcial\parcial\vuelo.c
+	"vuelo.h"
+
+1593263109 source:c:\users\montreal\desktop\simulacro 2` parcial\parcial\controller.c
+	"Controller.h"
+
+1593246678 c:\users\montreal\desktop\simulacro 2` parcial\parcial\controller.h
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"parser.h"
+	"vuelo.h"
+
