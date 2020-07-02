@@ -55,4 +55,7 @@ int esFloat(char stringNumber[]);
  * \return -
  */
 void getFloat(float* number, char* message, char* errorMessage);
+
+void getNombre(char* arrayString, char* message);
+
 #endif // VALIDARDATOS_H_INCLUDED

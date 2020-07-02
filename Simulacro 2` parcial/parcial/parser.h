@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "LinkedList.h"
 #include "Vuelo.h"
+#include "piloto.h"
 
 
 
@@ -15,3 +16,4 @@
  */
 
 int parser_vueloFromText(FILE* pFile, LinkedList* pArrayListVuelos);
+int parser_pilotoFromText(FILE* pFile, LinkedList* pArrayListPilotos);

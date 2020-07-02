@@ -57,7 +57,7 @@ static Node* getNode(LinkedList* this, int nodeIndex)
 
     Node* pNode = NULL;
     int i=0;
-    if(this != NULL && nodeIndex<this->size && nodeIndex>=0){
+    if(this != NULL && nodeIndex<ll_len(this) && nodeIndex>=0){
         pNode = this->pFirstNode;
         while(i<nodeIndex){
             pNode = pNode->pNextNode;
@@ -252,12 +252,9 @@ int ll_remove(LinkedList* this,int index)
 int ll_clear(LinkedList* this)
 {
     int returnAux = -1;
-    int i=0;
-    int lenghtLinkedList = ll_len(this);
     if(this!=NULL){
-        while(i<lenghtLinkedList){
-            ll_remove(this,i);
-            i++;
+        while(!ll_isEmpty(this)){
+            ll_remove(this,0);
         }
         returnAux = 0;
     }
@@ -522,11 +519,8 @@ int ll_count(LinkedList* this, int (*fn)(void* element)){
     int returnAux = -1;
     int acumulador = 0;
     int i=0;
-    //Node* aux;
     if(this!=NULL && fn!=NULL){
         while(i<ll_len(this)){
-            //aux = getNode(this,i);
-            //if(ll_get(this,i)!=NULL && fn(ll_get(this,i))==1)
             if(ll_get(this,i)!=NULL && fn(ll_get(this,i))>=0){
                 acumulador+=fn(ll_get(this,i));
             }
@@ -536,6 +530,8 @@ int ll_count(LinkedList* this, int (*fn)(void* element)){
     }
     return returnAux;
 }
+
+
 
 
 /** La función “ll_filter” recibirá una lista y una función “fn”.
@@ -555,6 +551,24 @@ LinkedList* ll_filter(LinkedList* this, int (*fn)(void* element)){
         if(LinkedListFilter!=NULL){
             while(i<ll_len(this)){
                 if(ll_get(this,i)!=NULL && fn(ll_get(this,i))==1){
+                    ll_add(LinkedListFilter,ll_get(this,i));
+                }
+                i++;
+            }
+        }
+    }
+    return LinkedListFilter;
+}
+
+LinkedList* ll_filter_parametro(LinkedList* this, int (*fn)(void* element,char cadena[]), char cadena[]){
+    LinkedList* LinkedListFilter = NULL;
+    int i = 0;
+    if(this!=NULL && fn!=NULL){
+        LinkedListFilter = ll_newLinkedList();
+        if(LinkedListFilter!=NULL){
+            while(i<ll_len(this)){
+                if(ll_get(this,i)!=NULL && fn(ll_get(this,i),cadena)==1){
+
                     ll_add(LinkedListFilter,ll_get(this,i));
                 }
                 i++;

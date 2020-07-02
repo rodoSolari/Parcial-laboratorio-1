@@ -50,16 +50,9 @@ int eVuelo_getCantPasajeros(eVuelo* this,int* cantPasajeros);
 //para 2 listas
 void printVuelo(eVuelo* vuelo,LinkedList* linkedListPilotos);
 void printAllVuelos(LinkedList* LinkedListVuelos,LinkedList* LinkedListPilotos);
-/*
-//lista y array
-void printVuelos(eVuelo* vuelo, ePiloto arrayPilotos[]);
-void printAllVuelos(LinkedList* LinkedListVuelos,ePiloto arrayPilotos[]);
-*/
+
 int getIndexOfVueloById(LinkedList* LinkedListPilotos,int id);
 int contarPasajeros(void* pasajeros);
-
-int filtrarVuelosIrlanda(LinkedList* LinkedListVuelos,LinkedList* LinkedListPilotos);
-int funcionFiltrarIrlanda(void* pElement);
 
 int funcionContarPasajerosIrlanda(void* pElement);
 

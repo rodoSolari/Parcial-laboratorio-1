@@ -234,104 +234,78 @@ int eVuelo_gethoraDespegue(eVuelo* this,int* horaDespegue)
 	return retorno;
 }
 
-/*
-int eVuelo_CompareByName(void* e1, void* e2)
-{
-    int respuesta = 0;
-    char nombrePrimereVuelo[50];
-    char nombreSegundoeVuelo[50];
-    eVuelo_getNombre(e1,nombrePrimereVuelo);
-    eVuelo_getNombre(e2,nombreSegundoeVuelo);
-    if(stricmp(nombrePrimereVuelo, nombreSegundoeVuelo)>0){
-        respuesta = 1;
-    }
-    return respuesta;
-}
-
-int eVuelo_CompareById(void* e1, void* e2)
-{
-    int idPrimereVuelo, idSegundoeVuelo;
-    eVuelo_getId(e1,&idPrimereVuelo);
-    eVuelo_getId(e2,&idSegundoeVuelo);
-
-    if(idPrimereVuelo > idSegundoeVuelo)
-    {
-        return 1;
-    }
-    else
-    {
-        if(idPrimereVuelo < idSegundoeVuelo)
-        {
-            return -1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-}
-
-int eVuelo_CompareBySueldo(void* e1, void* e2){
-    float sueldoPrimereVuelo, sueldoSegundoeVuelo;
-    eVuelo_getSueldo(e1,&sueldoPrimereVuelo);
-    eVuelo_getSueldo(e2,&sueldoSegundoeVuelo);
-
-    if(sueldoPrimereVuelo > sueldoSegundoeVuelo)
-    {
-        return 1;
-    }
-    else
-    {
-        if(sueldoPrimereVuelo < sueldoSegundoeVuelo)
-        {
-            return -1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-}
-
-int eVuelo_CompareByhoraDespegue(void* e1, void* e2)
-{
-    int horaDespeguePrimereVuelo, horaDespegueSegundoeVuelo;
-    eVuelo_gethoraDespegue(e1,&horaDespeguePrimereVuelo);
-    eVuelo_gethoraDespegue(e2,&horaDespegueSegundoeVuelo);
-
-    if(horaDespeguePrimereVuelo > horaDespegueSegundoeVuelo)
-    {
-        return 1;
-    }
-    else
-    {
-        if(horaDespeguePrimereVuelo < horaDespegueSegundoeVuelo)
-        {
-            return -1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-}
-*/
-
-//2 LISTAS
 void printVuelo(eVuelo* vuelo,LinkedList* linkedListPilotos){
-    int indicePiloto = getIndexOfVueloById(linkedListPilotos,vuelo->idPiloto);
-    ePiloto* piloto = ll_get(linkedListPilotos,indicePiloto);
 
-    printf("%5d%9d%18s%15s%12s%12d%15d%15d   \n",vuelo->idVuelo,
-                                                 vuelo->idAvion,
-                                                 piloto->nombre,
-                                                 vuelo->fecha,
-                                                 vuelo->destino,
-                                                 vuelo->cantPasajeros,
-                                                 vuelo->horaDespegue,
-                                                 vuelo->horaLlegada);
-    printf("\n");
+    int idVuelo;
+    int idPiloto;
+    int idAvion;
+    char fecha[20];
+    char destino[30];
+    int cantPasajeros;
+    int horaDespegue;
+    int horaLlegada;
+
+    int indicePiloto;
+    char nombrePiloto[30];
+    ePiloto* piloto;
+
+    eVuelo_getIdVuelo(vuelo,&idVuelo);
+    eVuelo_getIdAvion(vuelo,&idAvion);
+    eVuelo_getIdPiloto(vuelo,&idPiloto);
+    eVuelo_getFecha(vuelo,fecha);
+    eVuelo_getDestino(vuelo,destino);
+    eVuelo_getCantPasajeros(vuelo,&cantPasajeros);
+    eVuelo_gethoraDespegue(vuelo,&horaDespegue);
+    eVuelo_gethoraLlegada(vuelo,&horaLlegada);
+
+    indicePiloto = getIndexOfVueloById(linkedListPilotos,idPiloto);
+    if(indicePiloto!=-1){
+        piloto = ll_get(linkedListPilotos,indicePiloto);
+        ePiloto_getNombre(piloto,nombrePiloto);
+        printf("%5d%9d%18s%15s%12s%12d%15d%15d   \n",idVuelo,
+                                                     idAvion,
+                                                     nombrePiloto,
+                                                     fecha,
+                                                     destino,
+                                                     cantPasajeros,
+                                                     horaDespegue,
+                                                     horaLlegada);
+        printf("\n");
+    }
 }
+/*
+void printVueloSinNombrePiloto(eVuelo* vuelo,LinkedList* linkedListVuelos){
+
+    int idVuelo;
+    int idPiloto;
+    int idAvion;
+    char fecha[20];
+    char destino[30];
+    int cantPasajeros;
+    int horaDespegue;
+    int horaLlegada;
+
+    eVuelo_getIdVuelo(vuelo,&idVuelo);
+    eVuelo_getIdAvion(vuelo,&idAvion);
+    eVuelo_getIdPiloto(vuelo,&idPiloto);
+    eVuelo_getFecha(vuelo,fecha);
+    eVuelo_getDestino(vuelo,destino);
+    eVuelo_getCantPasajeros(vuelo,&cantPasajeros);
+    eVuelo_gethoraDespegue(vuelo,&horaDespegue);
+    eVuelo_gethoraLlegada(vuelo,&horaLlegada);
+
+
+    printf("%5d%9d%18s%15s%12s%12d%15d%15d   \n",idVuelo,
+                                                 idAvion,
+                                                 idPiloto,
+                                                 fecha,
+                                                 destino,
+                                                 cantPasajeros,
+                                                 horaDespegue,
+                                                 horaLlegada);
+    printf("\n");
+}*/
+
 
 void printAllVuelos(LinkedList* LinkedListVuelos,LinkedList* LinkedListPilotos){
     int i;
@@ -345,14 +319,14 @@ int getIndexOfVueloById(LinkedList* LinkedListPilotos,int id){
     int i;
     int indice = -1;
     ePiloto* piloto;
+    int idPiloto;
     for(i=0;i<ll_len(LinkedListPilotos);i++){
 
         piloto = ll_get(LinkedListPilotos,i);
-
-        if(piloto->idPiloto==id){
+        ePiloto_getIdPiloto(piloto,&idPiloto);
+        if(idPiloto==id){
             indice = i;
             break;
-
         }
     }
     return indice;
@@ -373,37 +347,14 @@ int contarPasajeros(void* pasajeros){
     return returnAux;
 }
 
-int filtrarVuelosIrlanda(LinkedList* LinkedListVuelos,LinkedList* LinkedListPilotos){
-    int returnAux = -1;
-    printf("Cantidad de viajes : %d\n",ll_len(LinkedListVuelos));
-    LinkedList* nuevo = ll_newLinkedList();
-    nuevo = ll_filter(LinkedListVuelos,funcionFiltrarIrlanda);
-    if(nuevo!=NULL){
-
-        printAllVuelos(nuevo,LinkedListPilotos);
-        returnAux = 1;
-    }
-    return returnAux;
-}
-
-int funcionFiltrarIrlanda(void* pElement){
-    int returnAux = -1;
-    eVuelo* vuelo;
-    if(pElement!=NULL){
-        vuelo = (eVuelo*) pElement;
-        if(strcmp(vuelo->destino,"Irlanda")==0){
-            returnAux = 1;
-        }
-    }
-    return returnAux;
-}
-
 int funcionContarPasajerosIrlanda(void* pElement){
     int returnAux = -1;
     eVuelo* vuelo;
+    char destino[30];
     if(pElement!=NULL){
         vuelo = (eVuelo*) pElement;
-        if(strcmp(vuelo->destino,"Irlanda")==0){
+        eVuelo_getDestino(vuelo,destino);
+        if(strcmp(destino,"Irlanda")==0){
             returnAux = vuelo->cantPasajeros;
         }
     }
@@ -413,12 +364,16 @@ int funcionContarPasajerosIrlanda(void* pElement){
 int funcionFiltrarVuelosCortos(void* pElement){
     int returnAux = -1;
     int totalHorasViaje;
+    int horaLlegada;
+    int horaDespegue;
     eVuelo* vuelo;
     if(pElement!=NULL){
         vuelo = (eVuelo*) pElement;
-        totalHorasViaje = vuelo->horaLlegada - vuelo->horaDespegue;
-        if(totalHorasViaje>=0 && totalHorasViaje<=3){
-            returnAux = 1;
+        if(eVuelo_gethoraDespegue(vuelo,&horaDespegue)==1 && eVuelo_gethoraLlegada(vuelo,&horaLlegada)==1){
+            totalHorasViaje = horaLlegada - horaDespegue;
+            if(totalHorasViaje>=0 && totalHorasViaje<=3){
+                returnAux = 1;
+            }
         }
     }
     return returnAux;
@@ -427,9 +382,11 @@ int funcionFiltrarVuelosCortos(void* pElement){
 int funcionFiltrarVuelosPortugal(void* pElement){
     int returnAux = -1;
     eVuelo* vuelo;
+    char destino[30];
     if(pElement!=NULL){
         vuelo = (eVuelo*) pElement;
-        if(strcmp(vuelo->destino,"Portugal")==0){
+        eVuelo_getDestino(vuelo,destino);
+        if(strcmp(destino,"Portugal")==0){
             returnAux = 1;
         }
     }
@@ -443,7 +400,7 @@ int funcionFiltrarAlexLifeson(void* pElement){
     int id;
     if(pElement!=NULL){
         vuelo = (eVuelo*) pElement;
-        if(eVuelo_getIdPiloto(vuelo,&id)==1 && id!=-1){
+        if(eVuelo_getIdPiloto(vuelo,&id)==1 && id!=1){
             returnAux = 1;
         }
     }

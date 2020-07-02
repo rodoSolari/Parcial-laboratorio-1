@@ -2,15 +2,15 @@
 
 int isValidString(char* cadena)
 {
-    int longitud = 50;
+    int longitud = 30;
 	int i=0;
 	int retorno = 1;
 
 	if(cadena != NULL)
 	{
-		for(i=0 ; cadena[i] != '\0' && i<longitud; i++)
+		for(i=0 ;i<longitud; i++)
 		{
-			if((cadena[i] < 'A' || cadena[i] > 'Z' ) && (cadena[i] < 'a' || cadena[i] > 'z' ))
+			if((cadena[i] > '0' && cadena[i] < '9' ))
 			{
 				retorno = 0;
 				break;
@@ -101,13 +101,21 @@ void getString(char* arrayString, char* message, char* errorMessage)
 {
     printf("%s", message);
     fflush(stdin);
-    gets(arrayString);
-
+    //gets(arrayString);
+    fgets(arrayString,30,stdin);
     while(isValidString(arrayString)==0){
         printf("%s", errorMessage);
         fflush(stdin);
         gets(arrayString);
     }
+}
+
+void getNombre(char* arrayString, char* message)
+{
+    printf("%s", message);
+    fflush(stdin);
+    fgets(arrayString,30,stdin);
+    arrayString[strlen(arrayString)-1] = '\0';
 }
 
 
